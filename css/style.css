@@ -22,10 +22,13 @@
    list-style: none;
    padding: 6px 20px;
    cursor: default;
+
+   color: lightgreen;
 }
 
 .experiment-step.active{
    background-color: #43BCB0;
+   color: white;
 }
 
 .experiment-step.locked{
