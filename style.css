@@ -8,6 +8,10 @@
    color: white;
 }
 
+#sidebar h3{
+   padding-left: 20px;
+}
+
 #sidebar ul{
    margin: 0;
    padding: 0;
@@ -17,6 +21,7 @@
 .experiment-step{
    list-style: none;
    padding: 6px 20px;
+   cursor: default;
 }
 
 .experiment-step.active{
