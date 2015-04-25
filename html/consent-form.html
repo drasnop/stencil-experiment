@@ -73,4 +73,4 @@
 <label for="consent"><u>By checking this box, I indicate that I have read and understood the above consent form, and that I am voluntarily taking part in this study.</u></label>
 <br />
 
-<button class="btn btn-primary" ng-disabled="!state.consentGiven" ng-click="state.page=1"> Submit and Move On </button>
+<button class="btn btn-primary" ng-if="state.consentGiven" ng-click="state.page=1"> Submit and Move On </button>

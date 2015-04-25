@@ -1,0 +1,17 @@
+<h2 class="page-title">Setup the experiment software</h2>
+
+<p> To conduct this experiment, we need you to add this bookmark to your bookmark bar. You will be able to remove it at the end of the experiment <small>(by right-clicking on it, and choosing "Delete" from the menu)</small></p>
+
+<ul>
+   <li>Drag-and-drop this bookmark to an empty area in your bookmark bar.</li>
+   <li>Go to the Wunderlist tab, and click on the bookmark you've just installed.</li>
+   <li>A "Success!" popup should appear, with a confirmation code. Please paste it below:
+      <br>
+      <input type="text/input" ng-model="state.installationCode" />
+      <button class="btn btn-default" ng-click="checkInstallationCode()">Check installation code</button>
+   </li>
+</ul>
+
+<div class="continue" ng-if="state.installationSuccess">
+   <span> Alright! Everything is in place. Let's start! <button class="btn btn-primary" ng-disabled="!state.installationSuccess" ng-click="state.page=3">Continue</button> </span>
+</div>

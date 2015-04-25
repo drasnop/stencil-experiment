@@ -27,13 +27,14 @@
          <li class="experiment-step" ng-class="{'locked': state.page<1, 'active': state.page==1, 'unlocked': state.page>1}">Create temporary Wunderlist account</li>
          <li class="experiment-step" ng-class="{'locked': state.page<2, 'active': state.page==2, 'unlocked': state.page>2}">Setup experiment</li>
          <li class="experiment-step" ng-class="{'locked': state.page<3, 'active': state.page==3, 'unlocked': state.page>3}">Learn Wunderlist basics</li>
-         <li class="experiment-step" ng-class="{'locked': state.page<4, 'active': state.page==4, 'unlocked': state.page>4}">Perform experiment</li>
+         <li class="experiment-step" ng-class="{'locked': state.page<4, 'active': state.page==4, 'unlocked': state.page>4}">Do the experiment</li>
          <li class="experiment-step" ng-class="{'locked': state.page<5, 'active': state.page==5, 'unlocked': state.page>5}">Receive code to get base reward and performance bonus</li>
       </ul>
    </div>
    <div id="content">
       <div ng-if="state.page==0" ng-include="'html/consent-form.html'"></div>
       <div ng-if="state.page==1" ng-include="'html/wunderlist-account.html'"></div>
+      <div ng-if="state.page==2" ng-include="'html/experiment-setup.html'"></div>
    </div>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
