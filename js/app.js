@@ -1,5 +1,6 @@
 var state = {
-   "page": 1,
+   "page": 0,
+   "consentGiven": false,
    "email": ""
 }
 
@@ -22,4 +23,8 @@ generateRandomString = function(length) {
 
 app.controller('MainCtrl', ['$scope', '$window', function($scope, $window) {
    $scope.state = $window.state;
+
+   $scope.printConsentForm=function(){
+      $window.print();
+   }
 }])
