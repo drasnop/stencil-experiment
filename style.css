@@ -1,0 +1,33 @@
+#sidebar{
+   position: fixed;
+   top: 0;
+   bottom: 0;
+   width: 200px;
+
+   background-color: #444;
+   color: white;
+}
+
+#sidebar ul{
+   margin: 0;
+   padding: 0;
+   margin-top: 40px;
+}
+
+.experiment-step{
+   list-style: none;
+   padding: 6px 20px;
+}
+
+.experiment-step.active{
+   background-color: #43BCB0;
+}
+
+.experiment-step.locked{
+   color: #BDBDBD;
+}
+
+#content{
+   margin-left: 200px;
+   padding-left: 40px;
+}

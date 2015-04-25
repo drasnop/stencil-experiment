@@ -1,0 +1,19 @@
+{
+   "folders":
+   [
+      {
+         "path": "/C/Users/Antoine/programmation/web/stencil-experiment",
+         "name":"stencil-experiment",
+         "folder_exclude_patterns":[
+            "git",
+            "libs"
+         ],
+         "file_exclude_patterns": [
+            ".git*",
+            "certificate.pem",
+            "ssl-server.py",
+            "*.sublime*"
+            ],
+      }
+   ]
+}
