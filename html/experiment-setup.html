@@ -3,7 +3,8 @@
 <p> To conduct this experiment, we need you to add this bookmark to your bookmark bar. You will be able to remove it at the end of the experiment <small>(by right-clicking on it, and choosing "Delete" from the menu)</small></p>
 
 <ul>
-   <li>Drag-and-drop this bookmark to an empty area in your bookmark bar:<br>
+   <li>Drag-and-drop this bookmark to an empty area in your bookmark bar
+   <span class="help-link" ng-click="dragBookmarkVisible=!dragBookmarkVisible">(Show me how)</span><br>
       <a class="bookmark" href="javascript:(function(e,a,g,h,f,c,b,d){
    if(!(f=e.jQuery)||g>f.fn.jquery||h(f)){
       console.log('fetching jQuery '+g);
@@ -62,7 +63,8 @@
          })
       })
    });
-});"><img src="img/bookmark.png" alt="bookmark">Setup experiment</a>
+});"><img src="img/bookmark.png">Setup experiment</a><br>
+   <img src="img/drag_bookmark.png" ng-show="dragBookmarkVisible">
    </li>
    <li>Go to the Wunderlist tab, and click on the bookmark you've just installed.</li>
    <li>A "Success!" popup should appear, with a confirmation code. Please paste it below:

@@ -1,5 +1,5 @@
 var state = {
-   "page": 3,
+   "page": 2,
    "consentGiven": false,
    "email": "",
    "installationCode": "",
