@@ -3,13 +3,20 @@ var state = {
    "consentGiven": false,
    "email": "",
    "installationCode": "",
-   "installationSuccess": false
+   "installationSuccess": false,
+
+   // debug
+   "goToPage": function(p){
+      state.page=p;
+      angular.element($("body")).scope().$apply();
+   }
 }
 
 var app = angular.module('stencil-experiment', []);
 
 app.run(function($window) {
    $window.state.email = generateRandomString(8) + "@gmail.com";
+   console.log("participant email:", $window.state.email)
 })
 
 generateRandomString = function(length) {
@@ -19,7 +26,6 @@ generateRandomString = function(length) {
    for(var i = 0; i < length; i++)
       string += possible.charAt(Math.floor(Math.random() * possible.length));
 
-   console.log(string)
    return string;
 }
 
