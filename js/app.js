@@ -1,13 +1,14 @@
 var state = {
-   "page": 0,
+   "page": 1,
+   "numPages": 6,
    "consentGiven": false,
    "email": "",
    "installationCode": "",
    "installationSuccess": false,
 
    // debug
-   "goToPage": function(p){
-      state.page=p;
+   "goToPage": function(p) {
+      state.page = p;
       angular.element($("body")).scope().$apply();
    }
 }
@@ -23,7 +24,7 @@ generateRandomString = function(length) {
    var string = "";
    var possible = "abcdefghijklmnopqrstuvwxyz0123456789";
 
-   for(var i = 0; i < length; i++)
+   for (var i = 0; i < length; i++)
       string += possible.charAt(Math.floor(Math.random() * possible.length));
 
    return string;
@@ -38,5 +39,11 @@ app.controller('MainCtrl', ['$scope', '$window', function($scope, $window) {
 
    $scope.checkInstallationCode = function() {
       state.installationSuccess = (state.installationCode == 3141);
+   }
+
+   $scope.pageLinkClicked = function(page) {
+      if (page <= state.page) {
+         state.page = page;
+      }
    }
 }])

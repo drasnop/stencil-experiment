@@ -1,35 +1,44 @@
 <h2 class="page-title">Create a temporary Wunderlist account</h2>
 
 <p> For this experiment, we need you to create a <u>temporary</u> account on <a href="//www.wunderlist.com" target="_blank">Wunderlist.com</a>, a popular todo-list app. You will delete this account at the end of the experiment.
-   <br> <small> If you are already a Wunderlist user, we recommend that you create another account for this experiment. Log out from your regular account before performing the steps below. </small> </p>
+  <br> <small> If you are already a Wunderlist user, we recommend that you create another account for this experiment. Log out from your regular account before performing the steps below. </small> </p>
 
 <ul>
-   <li>Go to the <a href="//www.wunderlist.com/signup?redirect_url=/webapp" target="_blank">sign up page of Wunderlist</a></li>
-   <li>Fill in the registration form:
-      <ul>
-         <li>Name: Ann Onymous <small>(or John Doe, Kung-Fu Panda...anything you want!)</small></li>
-         <li>Email: {{state.email}}</li>
-         <li>Password: experiment</li>
-      </ul>
-   </li>
-   <li>Click "Create Free Account"</li>
+  <li>Go to the <a href="//www.wunderlist.com/signup?redirect_url=/webapp" target="_blank">sign up page of Wunderlist</a></li>
+  <li>Fill in the registration form:
+    <table class="table">
+      <tr>
+        <td>Name: </td>
+        <td><b>Ann Onymous</b> <small>(or John Doe, Kung-Fu Panda...anything you want!)</small></td>
+      </tr>
+      <tr>
+        <td>Email: </td>
+        <td><b>{{state.email}}</b></td>
+      </tr>
+      <tr>
+        <td>Password: </td>
+        <td><b>experiment</b></td>
+      </tr>
+    </table>
+  </li>
+  <li>Click "Create Free Account"</li>
 </ul>
 
 <p>The Wunderlist web app should now load. <small>(Otherwise, you can access it <a href="//www.wunderlist.com/webapp#/chooseLists" target="_blank">here</a>)</small></p>
 
 <ul>
-   <li>In the menu that appears, select 3 lists:
-      <ul>
-         <li>Groceries</li>
-         <li>Travel</li>
-         <li>Work</li>
-      </ul>
-   </li>
-   <li>Click "Get Started"</li>
-   <li>Follow the quick pop-up tutorial</li>
+  <li>In the menu that appears, select 3 lists:
+    <ul>
+      <li>Groceries</li>
+      <li>Travel</li>
+      <li>Work</li>
+    </ul>
+  </li>
+  <li>Click "Get Started"</li>
+  <li>Follow the quick pop-up tutorial</li>
 </ul>
 
 <div class="continue">
-   <span> Alright, we are all set! Let's move on. </span>
-   <button class="btn btn-primary" ng-click="state.page=2">Continue</button>
+  <span> Alright, we are all set! Let's move on. </span>
+  <button class="btn btn-primary" ng-click="state.page=2">Continue</button>
 </div>
