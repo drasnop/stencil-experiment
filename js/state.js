@@ -1,9 +1,11 @@
 var state = {
-   "page": 1,
-   "consentGiven": false,
+   // setup
+   "serverURL": "localhost:8888",
+   "bookmarkletCode": "",
    "email": "",
-   "installationCode": "",
-   "installationSuccess": false,
+
+   // site content and navigation
+   "page": 1,
    "pages": [{
       "number": 0,
       "title": "Consent Form",
@@ -29,4 +31,9 @@ var state = {
       "title": "Get base reward + performance bonus",
       "template": "reward"
    }],
+
+   // display variables
+   "consentGiven": false,
+   "installationCode": "",
+   "installationSuccess": false
 }
