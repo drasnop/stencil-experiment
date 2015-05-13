@@ -1,18 +1,3 @@
-var state = {
-   "page": 1,
-   "numPages": 6,
-   "consentGiven": false,
-   "email": "",
-   "installationCode": "",
-   "installationSuccess": false,
-
-   // debug
-   "goToPage": function(p) {
-      state.page = p;
-      angular.element($("body")).scope().$apply();
-   }
-}
-
 var app = angular.module('stencil-experiment', []);
 
 app.run(function($window) {
@@ -45,5 +30,10 @@ app.controller('MainCtrl', ['$scope', '$window', function($scope, $window) {
       if (page <= state.page) {
          state.page = page;
       }
+   }
+
+   $scope.goToNextPage = function() {
+      state.page++;
+      $window.scrollTo(0, 0);
    }
 }])
