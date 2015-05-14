@@ -1,95 +1,96 @@
-#sidebar{
+#sidebar {
    position: fixed;
    top: 0;
    bottom: 0;
    width: 200px;
-
    background-color: #444;
    color: white;
 }
 
-#sidebar h3{
+#sidebar h3 {
    margin-left: 20px;
    margin-top: 40px;
 }
 
-#sidebar ul{
+#sidebar ul {
    margin: 0;
    padding: 0;
    margin-top: 25px;
 }
 
-.experiment-step{
+.experiment-step {
    list-style: none;
    padding: 6px 20px;
    cursor: default;
-
-   color: #57E1D3; /*lightgreen*/
+   color: #57E1D3;
+   /*lightgreen*/
 }
 
-.experiment-step.active{
-   background-color: #43BCB0 ;  /* #39CC39 */
+.experiment-step.active {
+   background-color: #43BCB0;
+   /* #39CC39 */
+   
    color: white;
 }
 
-.experiment-step.locked{
+.experiment-step.locked {
    color: #BDBDBD;
 }
 
-#content{
+#content {
    margin-left: 200px;
    padding-left: 40px;
    padding-bottom: 50px;
 }
 
-#content li{
+#content li {
    margin-bottom: 5px;
 }
 
-#content small{
+#content small {
    color: #999;
 }
 
-.page-title{
+.page-title {
    margin-top: 40px;
    margin-bottom: 25px;
 }
 
-.help-link{
+.help-link {
    color: #0088CC;
    cursor: pointer;
 }
 
-.help-link:hover{
+.help-link:hover {
    text-decoration: underline;
 }
 
-.bookmark{
+.bookmark {
    display: inline-block;
    margin-top: 5px;
    margin-bottom: 15px;
    padding: 6px 12px;
    border-radius: 15px;
-
    background-color: #F9EA94;
    color: inherit;
    text-decoration: none;
-
    cursor: grab;
    box-shadow: inset 0px 0px 2px 0px #888;
 }
 
-.bookmark img{
+.bookmark img {
    height: 16px;
    margin-right: 10px;
 }
 
-.bookmark:hover, .bookmark:active, .bookmark:focus{
+.bookmark:hover,
+.bookmark:active,
+.bookmark:focus {
    color: inherit;
    text-decoration: none;
 }
 
-.continue{
+.continue {
    margin-top: 30px;
    background-color: rgb(246, 246, 246);
    display: inline-block;
@@ -97,6 +98,11 @@
    border-radius: 10px;
 }
 
-.continue button{
+.continue button {
    margin-left: 30px;
+}
+
+.failure {
+   margin-top: 30px;
+   display: inline-block;
 }

@@ -9,7 +9,8 @@ app.config([
 
 app.run(function($window, $http) {
    // generate a unique ID for each participant
-   $window.state.email = generateRandomString(8);
+   //$window.state.email = generateRandomString(8);
+   $window.state.email = "skjrpxbh";
    console.log("participant email:", $window.state.email)
 
    // store the ID in firebase (will be checked from my software on wunderlist.com)
@@ -44,17 +45,18 @@ app.controller('MainCtrl', ['$scope', '$window', function($scope, $window) {
    }
 
    $scope.checkExperimentCompleted = function() {
-      state.experimentCheckClicked = true;
 
       // test if 10 trials were performed by this participant
       state.firebase.child('/trials').once("value", function(trialsSnapshot) {
-         state.experimentCompleted = (trialsSnapshot.numChildren() >= 1);
+         state.experimentCompleted = (trialsSnapshot.numChildren() >= 10);
          console.log(state.experimentCompleted ? "experiment completed!" : "Failure: experiment not completed")
+
+         state.computeCurrentBonusFromTrials(trialsSnapshot);
+
+         state.experimentCheckClicked = true;
+         angular.element("body").scope().$apply();
       })
 
-      state.firebase.child('/trials').once("value", function(trialsSnapshot) {
-         console.log(trialsSnapshot.val())
-      })
    }
 
    $scope.pageLinkClicked = function(page) {

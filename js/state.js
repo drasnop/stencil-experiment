@@ -1,6 +1,7 @@
 var state = {
    // setup
    "serverURL": "localhost:8888",
+   "bonusPerTrial": 0.1,
    "bookmarkletCode": "",
    "email": "",
    "firebase": "",
@@ -37,5 +38,23 @@ var state = {
    // display variables
    "consentGiven": false,
    "experimentCheckClicked": false,
-   "experimentCompleted": false
+   "experimentCompleted": false,
+   "bonus": 0
+}
+
+state.computeCurrentBonus = function() {
+   state.firebase.child('/trials').once("value", state.computeCurrentBonusFromTrials)
+}
+
+// compute the number of successful trials
+state.computeCurrentBonusFromTrials = function(trialsSnapshot) {
+   state.bonus = 0;
+
+   trialsSnapshot.forEach(function(trialSnapshot) {
+      var trial = trialSnapshot.val();
+      if (trial.success)
+         state.bonus += state.bonusPerTrial;
+   })
+
+   console.log("bonus from trials", state.bonus);
 }
