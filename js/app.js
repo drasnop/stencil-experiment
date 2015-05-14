@@ -45,7 +45,16 @@ app.controller('MainCtrl', ['$scope', '$window', function($scope, $window) {
 
    $scope.checkExperimentCompleted = function() {
       state.experimentCheckClicked = true;
-      state.experimentCompleted = state.firebase.child('/trials').length >= 1;
+
+      // test if 10 trials were performed by this participant
+      state.firebase.child('/trials').once("value", function(trialsSnapshot) {
+         state.experimentCompleted = (trialsSnapshot.numChildren() >= 1);
+         console.log(state.experimentCompleted ? "experiment completed!" : "Failure: experiment not completed")
+      })
+
+      state.firebase.child('/trials').once("value", function(trialsSnapshot) {
+         console.log(trialsSnapshot.val())
+      })
    }
 
    $scope.pageLinkClicked = function(page) {
