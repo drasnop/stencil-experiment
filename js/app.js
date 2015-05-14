@@ -43,8 +43,9 @@ app.controller('MainCtrl', ['$scope', '$window', function($scope, $window) {
       $window.print();
    }
 
-   $scope.checkInstallationCode = function() {
-      state.installationSuccess = (state.installationCode == 3141);
+   $scope.checkExperimentCompleted = function() {
+      state.experimentCheckClicked = true;
+      state.experimentCompleted = state.firebase.child('/trials').length >= 1;
    }
 
    $scope.pageLinkClicked = function(page) {

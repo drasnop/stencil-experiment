@@ -36,6 +36,6 @@ var state = {
 
    // display variables
    "consentGiven": false,
-   "installationCode": "",
-   "installationSuccess": false
+   "experimentCheckClicked": false,
+   "experimentCompleted": false
 }
