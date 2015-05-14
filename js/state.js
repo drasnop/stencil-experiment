@@ -3,9 +3,11 @@ var state = {
    "serverURL": "localhost:8888",
    "bookmarkletCode": "",
    "email": "",
+   "firebase": "",
+   "condition": "",
 
    // site content and navigation
-   "page": 1,
+   "page": 2,
    "pages": [{
       "number": 0,
       "title": "Consent Form",

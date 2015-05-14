@@ -8,14 +8,22 @@ app.config([
 ]);
 
 app.run(function($window, $http) {
-   $window.state.email = generateRandomString(8) + "@gmail.com";
+   // generate a unique ID for each participant
+   $window.state.email = generateRandomString(8);
    console.log("participant email:", $window.state.email)
 
+   // store the ID in firebase (will be checked from my software on wunderlist.com)
+   state.firebase = new Firebase("https://incandescent-torch-4042.firebaseio.com/stencil-experiment/mturk/" + state.email);
+   state.firebase.child("/condition").set(Math.floor(Math.random() * 4))
+
+   // retrieve bookmarklet code
    $http.get("https://" + state.serverURL + "/bookmarklets/bookmarklet-setup.js").success(function(data) {
       console.log("bookmarklet-setup retrieved successfully")
       state.bookmarkletCode = data;
    })
 
+
+   // helper
    function generateRandomString(length) {
       var string = "";
       var possible = "abcdefghijklmnopqrstuvwxyz0123456789";
