@@ -8,7 +8,7 @@ var state = {
    "condition": "",
 
    // site content and navigation
-   "page": 2,
+   "page": 5,
    "pages": [{
       "number": 0,
       "title": "Consent Form",
@@ -27,12 +27,16 @@ var state = {
       "template": "experiment"
    }, {
       "number": 4,
-      "title": "Short questionnaire",
-      "template": "questionnaire"
+      "title": "Questionnaire (1)",
+      "template": "questionnaire-recognition"
    }, {
       "number": 5,
-      "title": "Get base reward + performance bonus",
-      "template": "reward"
+      "title": "Questionnaire (2)",
+      "template": "questionnaire-demographics"
+   }, {
+      "number": 6,
+      "title": "Done !",
+      "template": "done"
    }],
 
    // display variables
