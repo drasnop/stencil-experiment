@@ -2,30 +2,51 @@
 
   <div class="form-group">
     <label>In the customization interface you used in this experiment, how easy or hard was it to find the settings you were looking for? </label>
-    <label>Very difficult</label>
-    <input type="radio">
-    <input type="radio">
-    <input type="radio">
-    <input type="radio">
-    <input type="radio">
-    <input type="radio">
-    <input type="radio">
-    <label>Very easy</label>
+    <div class="radio">
+      <label><input type="radio" ng-model="data.easeOfUse" value="-3">very difficult</label>
+    </div>
+    <div class="radio">
+      <label><input type="radio" ng-model="data.easeOfUse" value="-2">difficult</label>
+    </div>
+    <div class="radio">
+      <label><input type="radio" ng-model="data.easeOfUse" value="-1">somewhat difficult</label>
+    </div>
+    <div class="radio">
+      <label><input type="radio" ng-model="data.easeOfUse" value="0">neutral</label>
+    </div>
+    <div class="radio">
+      <label><input type="radio" ng-model="data.easeOfUse" value="1">somewhat easy</label>
+    </div>
+    <div class="radio">
+      <label><input type="radio" ng-model="data.easeOfUse" value="2">easy</label>
+    </div>
+    <div class="radio">
+      <label><input type="radio" ng-model="data.easeOfUse" value="3">very easy</label>
+    </div>
   </div>
 
   <div class="form-group">
     <label> Please rate how you liked or disliked the customization interface you’ve used in this experiment: </label>
     <div class="radio">
-      <label> <input type="radio" ng-model="data.computerUse" value="3"> daily, more than 4 hours </label>
+      <label><input type="radio" ng-model="data.liking" value="-3">hated it</label>
     </div>
     <div class="radio">
-      <label> <input type="radio" ng-model="data.computerUse" value="2"> daily, less than 4 hours </label>
+      <label><input type="radio" ng-model="data.liking" value="-2">didn't like it</label>
     </div>
     <div class="radio">
-      <label> <input type="radio" ng-model="data.computerUse" value="1"> a few times a week </label>
+      <label><input type="radio" ng-model="data.liking" value="-1">somewhat didn't like it</label>
     </div>
     <div class="radio">
-      <label> <input type="radio" ng-model="data.computerUse" value="0"> rarely </label>
+      <label><input type="radio" ng-model="data.liking" value="0">neither liked nor disliked it</label>
+    </div>
+    <div class="radio">
+      <label><input type="radio" ng-model="data.liking" value="1">somewhat liked it</label>
+    </div>
+    <div class="radio">
+      <label><input type="radio" ng-model="data.liking" value="2">liked it</label>
+    </div>
+    <div class="radio">
+      <label><input type="radio" ng-model="data.liking" value="3">loved it</label>
     </div>
   </div>
 
