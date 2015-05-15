@@ -2,7 +2,7 @@
 
   <div class="form-group">
     <label>Age:</label>
-    <input type="text" class="form-control" ng-model="data.age" ng-if="!data.ageNA">
+    <input type="number" class="form-control" ng-model="data.age" ng-if="!data.ageNA">
     <div class="checkbox">
       <label> <input type="checkbox" ng-model="data.ageNA">Prefer not to say</label>
     </div>
@@ -66,6 +66,6 @@
     </div>
   </div>
 
-  <button class="btn btn-primary" ng-click="submitAndContinue()"> Submit and continue </button>
+  <button class="btn btn-primary" ng-click="submitAndContinue()" ng-disabled="!isDataValid()"> Submit and continue </button>
 
 </form>

@@ -34,10 +34,24 @@ app.controller('MainCtrl', ['$scope', '$window', function($scope, $window) {
 
 
 app.controller('demographicsCtrl', function($scope) {
-   $scope.data = {};
+   $scope.data = {
+      // initialize some data to make the validation easier
+      "age": null,
+      "ageNA": false
+   };
+
+   $scope.isAgeValid = function() {
+      return $scope.data.age !== null && typeof $scope.data.age == "number" && $scope.data.age >= 18 && $scope.data.age <= 100;
+   }
+
+   $scope.isDataValid = function() {
+      return ($scope.isAgeValid() || $scope.data.ageNA) && $scope.data.hasOwnProperty("gender") &&
+         $scope.data.hasOwnProperty("computerUse") && $scope.data.hasOwnProperty("wunderlistUse");
+   }
 
    $scope.submitAndContinue = function() {
       console.log($scope.data)
+      state.firebase.child("/demographics").set($scope.data)
       $scope.goToNextPage();
    }
 })
