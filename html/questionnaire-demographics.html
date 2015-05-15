@@ -2,70 +2,70 @@
 
   <div class="form-group">
     <label>Age:</label>
-    <input type="text" class="form-control">
+    <input type="text" class="form-control" ng-model="data.age" ng-if="!data.ageNA">
     <div class="checkbox">
-      <label> <input type="checkbox">Prefer not to say</label>
+      <label> <input type="checkbox" ng-model="data.ageNA">Prefer not to say</label>
     </div>
   </div>
 
   <div class="form-group">
     <label>Gender:</label>
     <div class="radio">
-      <label> <input type="radio" name="gender"> Male </label>
+      <label> <input type="radio" ng-model="data.gender" value="male"> Male </label>
     </div>
     <div class="radio">
-      <label> <input type="radio" name="gender"> Female </label>
+      <label> <input type="radio" ng-model="data.gender" value="female"> Female </label>
     </div>
     <div class="radio">
-      <label> <input type="radio" name="gender"> Other </label>
+      <label> <input type="radio" ng-model="data.gender" value="other"> Other </label>
     </div>
     <div class="radio">
-      <label> <input type="radio" name="gender"> Prefer not to say </label>
+      <label> <input type="radio" ng-model="data.gender" value="NA"> Prefer not to say </label>
     </div>
   </div>
 
   <div class="form-group">
     <label> How often do you use a computer, approximately? </label>
     <div class="radio">
-      <label> <input type="radio" name="computer-use"> daily, more than 4 hours </label>
+      <label> <input type="radio" ng-model="data.computerUse" value="3"> daily, more than 4 hours </label>
     </div>
     <div class="radio">
-      <label> <input type="radio" name="computer-use"> daily, less than 4 hours </label>
+      <label> <input type="radio" ng-model="data.computerUse" value="2"> daily, less than 4 hours </label>
     </div>
     <div class="radio">
-      <label> <input type="radio" name="computer-use"> a few times a week </label>
+      <label> <input type="radio" ng-model="data.computerUse" value="1"> a few times a week </label>
     </div>
     <div class="radio">
-      <label> <input type="radio" name="computer-use"> rarely </label>
+      <label> <input type="radio" ng-model="data.computerUse" value="0"> rarely </label>
     </div>
   </div>
 
   <div class="form-group">
     <label> Have you ever used Wunderlist? </label>
     <div class="radio">
-      <label><input type="radio" name="wunderlist-use"> never </label>
+      <label><input type="radio" ng-model="data.wunderlistUse" value="0"> never </label>
     </div>
     <div class="radio">
-      <label><input type="radio" name="wunderlist-use"> I tried it before, but don’t use it regularly </label>
+      <label><input type="radio" ng-model="data.wunderlistUse" value="1"> I tried it before, but don’t use it regularly </label>
     </div>
     <div class="radio">
-      <label><input type="radio" name="wunderlist-use"> regular user, less than a year </label>
+      <label><input type="radio" ng-model="data.wunderlistUse" value="2"> regular user, less than a year </label>
     </div>
     <div class="radio">
-      <label><input type="radio" name="wunderlist-use"> regular user, more than a year </label>
+      <label><input type="radio" ng-model="data.wunderlistUse" value="3"> regular user, more than a year </label>
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group" ng-if="data.wunderlistUse>=2">
     <label> Do you regularly use: </label>
     <div class="checkbox">
-      <label><input type="checkbox"> the Wunderlist smartphone app? </label>
+      <label><input type="checkbox" ng-model="data.wunderlistSmartphone"> the Wunderlist smartphone app? </label>
     </div>
     <div class="checkbox">
-      <label><input type="checkbox"> the Wunderlist web or desktop app? </label>
+      <label><input type="checkbox" ng-model="data.wunderlistDesktop"> the Wunderlist web or desktop app? </label>
     </div>
   </div>
 
-  <button class="btn btn-primary" ng-click="goToNextPage()"> Submit and continue </button>
+  <button class="btn btn-primary" ng-click="submitAndContinue()"> Submit and continue </button>
 
 </form>

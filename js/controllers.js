@@ -34,5 +34,10 @@ app.controller('MainCtrl', ['$scope', '$window', function($scope, $window) {
 
 
 app.controller('demographicsCtrl', function($scope) {
+   $scope.data = {};
 
+   $scope.submitAndContinue = function() {
+      console.log($scope.data)
+      $scope.goToNextPage();
+   }
 })
