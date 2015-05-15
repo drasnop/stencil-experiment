@@ -55,3 +55,18 @@ app.controller('demographicsCtrl', function($scope) {
       $scope.goToNextPage();
    }
 })
+
+
+app.controller('preferenceCtrl', function($scope) {
+   $scope.data = {};
+
+   $scope.isDataValid = function() {
+      return $scope.data.hasOwnProperty("easeOfUse") && $scope.data.hasOwnProperty("liking");
+   }
+
+   $scope.submitAndContinue = function() {
+      console.log($scope.data)
+      state.firebase.child("/preference").set($scope.data)
+      $scope.goToNextPage();
+   }
+})

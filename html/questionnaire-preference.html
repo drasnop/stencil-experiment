@@ -1,0 +1,39 @@
+<form name="preferenceQuestionnaire" ng-controller="preferenceCtrl">
+
+  <div class="form-group">
+    <label>In the customization interface you used in this experiment, how easy or hard was it to find the settings you were looking for? </label>
+    <label>Very difficult</label>
+    <input type="radio">
+    <input type="radio">
+    <input type="radio">
+    <input type="radio">
+    <input type="radio">
+    <input type="radio">
+    <input type="radio">
+    <label>Very easy</label>
+  </div>
+
+  <div class="form-group">
+    <label> Please rate how you liked or disliked the customization interface you’ve used in this experiment: </label>
+    <div class="radio">
+      <label> <input type="radio" ng-model="data.computerUse" value="3"> daily, more than 4 hours </label>
+    </div>
+    <div class="radio">
+      <label> <input type="radio" ng-model="data.computerUse" value="2"> daily, less than 4 hours </label>
+    </div>
+    <div class="radio">
+      <label> <input type="radio" ng-model="data.computerUse" value="1"> a few times a week </label>
+    </div>
+    <div class="radio">
+      <label> <input type="radio" ng-model="data.computerUse" value="0"> rarely </label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Please share your feedback with us on this software: What did you like about it? What could be improved?</label>
+    <textarea class="form-control" ng-model="data.feedback"></textarea>
+  </div>
+
+  <button class="btn btn-primary" ng-click="submitAndContinue()" ng-disabled="!isDataValid()"> Submit and continue </button>
+
+</form>

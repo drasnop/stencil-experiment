@@ -32,9 +32,13 @@ var state = {
    }, {
       "number": 5,
       "title": "Questionnaire (2)",
-      "template": "questionnaire-demographics"
+      "template": "questionnaire-preference"
    }, {
       "number": 6,
+      "title": "Questionnaire (3)",
+      "template": "questionnaire-demographics"
+   }, {
+      "number": 7,
       "title": "Done !",
       "template": "done"
    }],
