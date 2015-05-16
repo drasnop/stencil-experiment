@@ -9,8 +9,8 @@ app.config([
 
 app.run(function($window, $http) {
    // generate a unique ID for each participant
-   //$window.state.email = generateRandomString(8);
-   $window.state.email = "skjrpxbh";
+   $window.state.email = generateRandomString(8);
+   //$window.state.email = "skjrpxbh";
    console.log("participant email:", $window.state.email)
 
    // store the ID in firebase (will be checked from my software on wunderlist.com)
