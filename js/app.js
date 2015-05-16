@@ -18,8 +18,7 @@ app.run(function($window, $http) {
    state.firebase.child("/condition").set(Math.floor(Math.random() * 4))
 
    // retrieve bookmarklet code
-   //$http.get("http://www.cs.ubc.ca/~aponsard/experiment/bookmarklets/bookmarklet-setup.js").success(function(data) {
-   $http.get("https://localhost:8888/bookmarklets/bookmarklet-setup.js").success(function(data) {
+   $http.get("/bookmarklets/bookmarklet-setup.js").success(function(data) {
       console.log("bookmarklet-setup retrieved successfully")
       state.bookmarkletCode = data;
    })

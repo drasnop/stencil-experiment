@@ -9,7 +9,7 @@ var state = {
    "condition": "",
 
    // site content and navigation
-   "page": 1,
+   "page": 2,
    "pages": [{
       "number": 0,
       "title": "Consent Form",
