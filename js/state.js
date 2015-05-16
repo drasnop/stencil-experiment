@@ -1,7 +1,7 @@
 var state = {
    // setup
-   //"serverURL": "localhost:8888",
-   "serverURL": "tequila.cs.ubc.ca/stencil",
+   "serverURL": "localhost:8888",
+   //"serverURL": "tequila.cs.ubc.ca/stencil",
    "bonusPerTrial": 0.1,
    "bookmarkletCode": "",
    "email": "",
