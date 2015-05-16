@@ -56,6 +56,11 @@
    margin-bottom: 25px;
 }
 
+.table {
+   width: auto;
+   margin-top: 20px;
+}
+
 .help-link {
    color: #0088CC;
    cursor: pointer;

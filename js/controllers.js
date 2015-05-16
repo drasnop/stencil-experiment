@@ -141,7 +141,6 @@ app.controller('recognitionCtrl', function($scope) {
    }
 
    $scope.submitAndContinue = function() {
-      console.log($scope.tabs, cleanUpModel($scope.tabs))
       state.firebase.child("/recognition/tabs").set(cleanUpModel($scope.tabs))
       $scope.goToNextPage();
    }
