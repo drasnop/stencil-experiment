@@ -20,7 +20,11 @@ app.run(function($window, $http) {
    // retrieve bookmarklet code
    $http.get("/bookmarklets/bookmarklet-setup.js").success(function(data) {
       console.log("bookmarklet-setup retrieved successfully")
-      state.bookmarkletCode = data;
+
+      if (state.serverURL === "localhost:8888")
+         state.bookmarkletCode = data.replace("tequila.cs.ubc.ca/stencil", "localhost:8888");
+      else
+         state.bookmarkletCode = data;
    })
 
 

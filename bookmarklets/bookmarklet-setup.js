@@ -34,8 +34,7 @@ javascript: (function(e, a, g, h, f, c, b, d) {
       alert("The experiment software is loading... Please wait a few seconds.");
    }, 10);
 
-   var serverURL = 'localhost:8888';
-   /*var serverURL = 'tequila.cs.ubc.ca/stencil';*/
+   var serverURL = 'tequila.cs.ubc.ca/stencil';
 
    $('<link/>', {
       rel: 'stylesheet',
