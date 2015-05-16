@@ -1,0 +1,31 @@
+<form name="recognitionQuestionnaire" ng-controller="recognitionCtrl">
+
+  <div class="form-group">
+    <label> The settings menu you used was organized into tabs. Please select the tabs that you remember in the list below:
+      <br>
+      <span class="info">(note: some of these do <u>not</u> appear in Wunderlist! You will receive an extra <span class="money">$0.02</span> for each correct response)</span>
+    </label>
+
+    <table>
+      <tr ng-repeat="tab in tabs">
+        <td>
+          <label>{{tab.name}}</label>
+        </td>
+        <td class="radio">
+          <label>
+            <input type="radio" ng-model="tab.remembered" ng-value="{{true}}">Yes</label>
+        </td>
+        <td class="radio">
+          <label>
+            <input type="radio" ng-model="tab.remembered" ng-value="{{false}}">No</label>
+        </td>
+
+      </tr>
+
+    </table>
+
+  </div>
+
+  <button class="btn btn-primary" ng-click="submitAndContinue()" ng-disabled="!isDataValid()"> Submit and continue </button>
+
+</form>

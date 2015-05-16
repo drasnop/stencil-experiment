@@ -136,3 +136,18 @@ input.form-control {
    width: 100%;
    text-align: center;
 }
+
+.info {
+   color: #999;
+   font-weight: 400;
+}
+
+.money {
+   color: #03CE03;
+   ;
+   font-weight: 700;
+}
+
+div.inline-block {
+   display: inline-block;
+}

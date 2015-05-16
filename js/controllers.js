@@ -56,7 +56,6 @@ app.controller('demographicsCtrl', function($scope) {
    }
 })
 
-
 app.controller('preferenceCtrl', function($scope) {
    $scope.data = {};
 
@@ -67,6 +66,83 @@ app.controller('preferenceCtrl', function($scope) {
    $scope.submitAndContinue = function() {
       console.log($scope.data)
       state.firebase.child("/preference").set($scope.data)
+      $scope.goToNextPage();
+   }
+})
+
+app.controller('recognitionCtrl', function($scope) {
+
+   $scope.tabs = shuffleArray([{
+      "name": "General",
+      "fake": false,
+      "remembered": null
+   }, {
+      "name": "Shortcuts",
+      "fake": false,
+      "remembered": null
+   }, {
+      "name": "Smart Lists",
+      "fake": false,
+      "remembered": null
+   }, {
+      "name": "Notifications",
+      "fake": false,
+      "remembered": null
+   }, {
+      "name": "Account",
+      "fake": false,
+      "remembered": null
+   }, {
+      "name": "Display",
+      "fake": true,
+      "remembered": null
+   }, {
+      "name": "Sounds",
+      "fake": true,
+      "remembered": null
+   }, {
+      "name": "Sync",
+      "fake": true,
+      "remembered": null
+   }, {
+      "name": "Reminders",
+      "fake": true,
+      "remembered": null
+   }, {
+      "name": "Network",
+      "fake": true,
+      "remembered": null
+   }]);
+
+   function shuffleArray(array) {
+      for (var i = array.length - 1; i > 0; i--) {
+         var j = Math.floor(Math.random() * (i + 1));
+         var temp = array[i];
+         array[i] = array[j];
+         array[j] = temp;
+      }
+      return array;
+   }
+
+   function cleanUpModel(array) {
+      var output = $.extend([], array);
+      output.forEach(function(elem) {
+         delete elem["$$hashKey"];
+      });
+      return output;
+   }
+
+   $scope.isDataValid = function() {
+      for (var i in $scope.tabs) {
+         if ($scope.tabs[i].remembered === null)
+            return false;
+      }
+      return true;
+   }
+
+   $scope.submitAndContinue = function() {
+      console.log($scope.tabs, cleanUpModel($scope.tabs))
+      state.firebase.child("/recognition/tabs").set(cleanUpModel($scope.tabs))
       $scope.goToNextPage();
    }
 })

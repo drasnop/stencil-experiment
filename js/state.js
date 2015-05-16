@@ -8,7 +8,7 @@ var state = {
    "condition": "",
 
    // site content and navigation
-   "page": 5,
+   "page": 4,
    "pages": [{
       "number": 0,
       "title": "Consent Form",
