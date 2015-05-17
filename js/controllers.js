@@ -127,25 +127,27 @@ app.controller('recognitionCtrl', function($scope) {
       return $scope.computeBonus($scope.tabs, state.bonusPerTab);
    }
 
-   $scope.options = shuffleArray([{
+   $scope.options = generateOptions();
+
+   var fakeOptions = [{
       "name": "General",
-      "present": true,
+      "present": false,
       "remembered": null
    }, {
       "name": "Shortcuts",
-      "present": true,
+      "present": false,
       "remembered": null
    }, {
       "name": "Smart Lists",
-      "present": true,
+      "present": false,
       "remembered": null
    }, {
       "name": "Notifications",
-      "present": true,
+      "present": false,
       "remembered": null
    }, {
       "name": "Account",
-      "present": true,
+      "present": false,
       "remembered": null
    }, {
       "name": "Display",
@@ -167,7 +169,7 @@ app.controller('recognitionCtrl', function($scope) {
       "name": "Security",
       "present": false,
       "remembered": null
-   }]);
+   }];
 
    $scope.optionsBonus = function() {
       return $scope.computeBonus($scope.options, state.bonusPerOption);
@@ -181,6 +183,34 @@ app.controller('recognitionCtrl', function($scope) {
          array[j] = temp;
       }
       return array;
+   }
+
+   function generateOptions() {
+      state.firebase.child('/tabs').once("value", function(tabsSnapshot) {
+         // 1: retrieve all the tabs
+         var tabs = tabsSnapshot.val();
+         console.log("experiment tabs retrieved", tabs);
+
+         // select one third of options per tab, with a maximum of 4
+         var numOptionsPerTab = {
+            "General": 3,
+            "Shortcuts": 4,
+            "Smartlists": 2,
+            "Notifications": 1
+         }
+
+         // 2: randomly pick an appropriate number of options in each tab, respecting some constraints
+         var optionsInTab = [];
+         for (var tabName in tabs) {
+            // get options from tab t, excluding the forbidden options
+            // TODO filter and return, to create deep copy?
+            var allowedOptions = tabs[tabName].options;
+
+            // randomly pick numOptionsPerTab[t] options      
+            shuffleArray(allowedOptions);
+            optionsInTab[t] = allowedOptions.slice(0, numOptionsPerTab[tabName]);
+         }
+      })
    }
 
    /* display of questionnaires */
