@@ -1,20 +1,21 @@
-<p> To conduct this experiment, we need you to add this bookmark to your bookmark bar.
-  <br> You will be able to remove it at the end of the experiment <small>(by right-clicking on it, and choosing "Delete" from the menu)</small></p>
-
 <ul>
-  <li>Open the page <a ng-href="https://{{state.serverURL}}/verify.html" target="_blank">{{state.serverURL}}/verify.html</a>. Add a security exception if needed.</li>
-  <li>Drag-and-drop this bookmark to an empty area in your bookmark bar
-    <span class="help-link" ng-click="dragBookmarkVisible=!dragBookmarkVisible">(Show me how)</span>
+  <li>Open the page <a ng-href="https://tequila.cs.ubc.ca/stencil/verify.html" target="_blank">https://tequila.cs.ubc.ca/stencil/verify.html</a>. Add a security exception if needed.</li>
+
+  <li>To conduct this experiment, we need you to add a bookmark to your bookmark bar. <span class="help-link" ng-click="bookmarkRationale= !bookmarkRationale">Why?</span>
     <br>
+    <span ng-show="bookmarkRationale"> It will be used to retrieve some file necessary to setup the experiment software in Wunderlist.<br>You will be able to remove this bookmark at the end of the experiment <small>(by right-clicking on it, and choosing "Delete" from the menu)</small></li>
+
+  <li>Drag-and-drop this bookmark to an empty area in your bookmark bar <br>
+    <img id="instructionsBookmark" src="img/drag_bookmark.png">
     <a class="bookmark" ng-href="{{state.bookmarkletCode}}"><img src="img/bookmark.png">Setup experiment</a>
-    <br>
-    <img src="img/drag_bookmark.png" ng-show="dragBookmarkVisible">
   </li>
+
   <li>Go to the Wunderlist tab, and click on the bookmark you've just installed.</li>
+
   <li>A "Setup complete!" popup should appear.</li>
 </ul>
 
 <div class="continue">
-  <span> Alright! Everything is in place. Please follow the instructions given by the popups on the Wunderlist page.</span>
-  <button class="btn btn-primary" ng-click="goToNextPage()">Continue</button>
-</div>
+  <span> Follow the instructions given by the popups on the Wunderlist page, then click: </span>
+    <button class="btn btn-primary" ng-click="goToNextPage()">Continue</button>
+    </div>

@@ -95,6 +95,11 @@
    text-decoration: none;
 }
 
+#instructionsBookmark {
+   margin-top: 10px;
+   margin-right: 25px;
+}
+
 .continue {
    margin-top: 30px;
    background-color: rgb(246, 246, 246);
