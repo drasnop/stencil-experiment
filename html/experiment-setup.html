@@ -1,21 +1,30 @@
 <ul>
-  <li>Open the page <a ng-href="https://tequila.cs.ubc.ca/stencil/verify.html" target="_blank">https://tequila.cs.ubc.ca/stencil/verify.html</a>. Add a security exception if needed.</li>
-
-  <li>To conduct this experiment, we need you to add a bookmark to your bookmark bar. <span class="help-link" ng-click="bookmarkRationale= !bookmarkRationale">Why?</span>
+  <li>Open the page <a ng-href="https://tequila.cs.ubc.ca/stencil/verify.html" target="_blank">https://tequila.cs.ubc.ca/stencil/verify.html</a>. Your browser may ask your permission to access this website; allow it. <span class="help-link" ng-click="howSSL= !howSSL">How?</span>
     <br>
-    <span ng-show="bookmarkRationale"> It will be used to retrieve some file necessary to setup the experiment software in Wunderlist.<br>You will be able to remove this bookmark at the end of the experiment <small>(by right-clicking on it, and choosing "Delete" from the menu)</small></li>
-
-  <li>Drag-and-drop this bookmark to an empty area in your bookmark bar <br>
-    <img id="instructionsBookmark" src="img/drag_bookmark.png">
-    <a class="bookmark" ng-href="{{state.bookmarkletCode}}"><img src="img/bookmark.png">Setup experiment</a>
+    <span ng-show="howSSL"> In <b>Chrome</b>, click <u>Advanced</u> at the bottom of the text, then click <u>Proceed to tequila.cs.ubc.ca (unsafe)</u><br>
+  In <b>Firfox</b>, click "I understand the risks" at the bottom, then "Add exception..." and "Confirm Security Exception"<br>
+  In <b>Internet Explorer</b>, click <u>Continue to this website (not recommended)</u>."</span>
   </li>
-
-  <li>Go to the Wunderlist tab, and click on the bookmark you've just installed.</li>
-
-  <li>A "Setup complete!" popup should appear.</li>
+  <li>Paste the code displayed on that page here: <input type="text" ng-model="state.sslCode" ng-change="checkSSL()"></li>
 </ul>
 
-<div class="continue">
-  <span> Follow the instructions given by the popups on the Wunderlist page, then click: </span>
-    <button class="btn btn-primary" ng-click="goToNextPage()">Continue</button>
-    </div>
+<div ng-if="sslSuccess">
+  <ul>
+    <li>To conduct this experiment, we need you to add a bookmark to your bookmark bar. <span class="help-link" ng-click="bookmarkRationale= !bookmarkRationale">Why?</span>
+      <br>
+      <span ng-show="bookmarkRationale"> It will be used to retrieve some file necessary to setup the experiment software in Wunderlist.<br>You will be able to remove this bookmark at the end of the experiment <small>(by right-clicking on it, and choosing "Delete" from the menu)</small></span>
+    </li>
+
+    <li>Drag-and-drop this bookmark to an empty area in your bookmark bar:
+      <br>
+      <img id="instructionsBookmark" src="img/drag_bookmark.png">
+      <a class="bookmark" ng-href="{{state.bookmarkletCode}}"><img src="img/bookmark.png">Setup experiment</a>
+    </li>
+
+    <li>Go to the Wunderlist tab, and click on the bookmark you've just installed.</li>
+
+    <li>A "Setup complete!" popup should appear.</li>
+  </ul>
+
+  <button class="btn btn-primary" ng-click="goToNextPage()">Continue</button>
+</div>

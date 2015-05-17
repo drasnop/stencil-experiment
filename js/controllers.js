@@ -1,8 +1,15 @@
 app.controller('MainCtrl', ['$scope', '$window', function($scope, $window) {
    $scope.state = $window.state;
 
+   $scope.sslSuccess = false;
+
    $scope.printConsentForm = function() {
       $window.print();
+   }
+
+   $scope.checkSSL = function() {
+      console.log(state.sslCode)
+      $scope.sslSuccess = (state.sslCode == 9876);
    }
 
    $scope.checkExperimentCompleted = function() {
