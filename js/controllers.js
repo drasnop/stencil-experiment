@@ -127,6 +127,52 @@ app.controller('recognitionCtrl', function($scope) {
       return $scope.computeBonus($scope.tabs, state.bonusPerTab);
    }
 
+   $scope.options = shuffleArray([{
+      "name": "General",
+      "present": true,
+      "remembered": null
+   }, {
+      "name": "Shortcuts",
+      "present": true,
+      "remembered": null
+   }, {
+      "name": "Smart Lists",
+      "present": true,
+      "remembered": null
+   }, {
+      "name": "Notifications",
+      "present": true,
+      "remembered": null
+   }, {
+      "name": "Account",
+      "present": true,
+      "remembered": null
+   }, {
+      "name": "Display",
+      "present": false,
+      "remembered": null
+   }, {
+      "name": "Sounds",
+      "present": false,
+      "remembered": null
+   }, {
+      "name": "Sync",
+      "present": false,
+      "remembered": null
+   }, {
+      "name": "Reminders",
+      "present": false,
+      "remembered": null
+   }, {
+      "name": "Security",
+      "present": false,
+      "remembered": null
+   }]);
+
+   $scope.optionsBonus = function() {
+      return $scope.computeBonus($scope.options, state.bonusPerOption);
+   }
+
    function shuffleArray(array) {
       for (var i = array.length - 1; i > 0; i--) {
          var j = Math.floor(Math.random() * (i + 1));
@@ -144,6 +190,13 @@ app.controller('recognitionCtrl', function($scope) {
       check($scope.tabs);
       state.firebase.child("/recognition/tabs").set(cleanUpModel($scope.tabs));
    }
+
+   $scope.submitOptions = function() {
+      state.optionsSubmitted = true;
+      check($scope.options);
+      state.firebase.child("/recognition/options").set(cleanUpModel($scope.options));
+   }
+
 
    function check(array) {
       array.forEach(function(element) {
@@ -173,9 +226,17 @@ app.controller('recognitionCtrl', function($scope) {
       return output;
    }
 
-   $scope.isDataValid = function() {
+   $scope.isTabDataValid = function() {
       for (var i in $scope.tabs) {
          if ($scope.tabs[i].remembered === null)
+            return false;
+      }
+      return true;
+   }
+
+   $scope.isOptionDataValid = function() {
+      for (var i in $scope.options) {
+         if ($scope.options[i].remembered === null)
             return false;
       }
       return true;

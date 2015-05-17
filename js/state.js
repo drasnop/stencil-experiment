@@ -5,6 +5,7 @@ var state = {
    //"serverURL": "tequila.cs.ubc.ca/stencil",
    "bonusPerTrial": 0.1,
    "bonusPerTab": 0.05,
+   "bonusPerOption": 0.05,
    "bookmarkletCode": "",
    "email": "lotaculi",
    //"email": "",
