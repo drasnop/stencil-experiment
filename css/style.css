@@ -62,12 +62,18 @@
 }
 
 .help-link {
-   color: #0088CC;
+   /*color: #0088CC;*/
+   
+   color: #04C27E;
    cursor: pointer;
 }
 
 .help-link:hover {
    text-decoration: underline;
+}
+
+.help {
+   color: #82BF82;
 }
 
 .bookmark {
