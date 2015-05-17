@@ -3,29 +3,32 @@
   <div class="form-group">
     <label> The settings menu you used was organized into tabs. Please select the tabs that you remember in the list below:
       <br>
-      <span class="info">(note: some of these do <u>not</u> appear in Wunderlist! You will receive an extra <span class="money">$0.02</span> for each correct response)</span>
+      <span class="info">(note: some of these do <u>not</u> appear in Wunderlist! You will receive an extra <span class="money green">{{state.bonusPerTab | currency : "$" : 2}}</span> for each correct response, minus <span class="money red">{{state.bonusPerTab | currency : "$" : 2}}</span> for each incorrect response.)</span>
     </label>
 
-    <table>
+    <table class="spaced">
       <tr ng-repeat="tab in tabs">
         <td>
           <label>{{tab.name}}</label>
         </td>
-        <td class="radio">
+        <td class="inline-radio">
           <label>
-            <input type="radio" ng-model="tab.remembered" ng-value="{{true}}">Yes</label>
+            <input type="radio" ng-model="tab.remembered" ng-value="{{true}}" ng-disabled="state.tabsSubmitted">Yes</label>
         </td>
-        <td class="radio">
+        <td class="inline-radio">
           <label>
-            <input type="radio" ng-model="tab.remembered" ng-value="{{false}}">No</label>
+            <input type="radio" ng-model="tab.remembered" ng-value="{{false}}" ng-disabled="state.tabsSubmitted">No</label>
         </td>
 
       </tr>
 
     </table>
 
+    <button class="btn btn-default" ng-disabled="!isDataValid()" ng-click="submitTabs()">Submit</button>
+    <span ng-if="state.tabsSubmitted">You got {{computeNumCorrects(tabs)}} out of {{tabs.length}} correct answers. Your additional bonus is {{tabsBonus() | currency : "$" : 2}}.</span>
+
   </div>
 
-  <button class="btn btn-primary" ng-click="submitAndContinue()" ng-disabled="!isDataValid()"> Submit and continue </button>
+  <button class="btn btn-primary" ng-click="submitAndContinue()" ng-if="state.tabsSubmitted && state.optionsSubmitted"> Submit and continue </button>
 
 </form>

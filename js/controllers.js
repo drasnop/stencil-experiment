@@ -79,47 +79,53 @@ app.controller('preferenceCtrl', function($scope) {
 
 app.controller('recognitionCtrl', function($scope) {
 
+   /* init */
+
    $scope.tabs = shuffleArray([{
       "name": "General",
-      "fake": false,
+      "present": true,
       "remembered": null
    }, {
       "name": "Shortcuts",
-      "fake": false,
+      "present": true,
       "remembered": null
    }, {
       "name": "Smart Lists",
-      "fake": false,
+      "present": true,
       "remembered": null
    }, {
       "name": "Notifications",
-      "fake": false,
+      "present": true,
       "remembered": null
    }, {
       "name": "Account",
-      "fake": false,
+      "present": true,
       "remembered": null
    }, {
       "name": "Display",
-      "fake": true,
+      "present": false,
       "remembered": null
    }, {
       "name": "Sounds",
-      "fake": true,
+      "present": false,
       "remembered": null
    }, {
       "name": "Sync",
-      "fake": true,
+      "present": false,
       "remembered": null
    }, {
       "name": "Reminders",
-      "fake": true,
+      "present": false,
       "remembered": null
    }, {
-      "name": "Network",
-      "fake": true,
+      "name": "Security",
+      "present": false,
       "remembered": null
    }]);
+
+   $scope.tabsBonus = function() {
+      return $scope.computeBonus($scope.tabs, state.bonusPerTab);
+   }
 
    function shuffleArray(array) {
       for (var i = array.length - 1; i > 0; i--) {
@@ -130,6 +136,34 @@ app.controller('recognitionCtrl', function($scope) {
       }
       return array;
    }
+
+   /* display of questionnaires */
+
+   $scope.submitTabs = function() {
+      state.tabsSubmitted = true;
+      check($scope.tabs);
+      state.firebase.child("/recognition/tabs").set(cleanUpModel($scope.tabs));
+   }
+
+   function check(array) {
+      array.forEach(function(element) {
+         element.correct = (element.present === element.remembered);
+      });
+   }
+
+   $scope.computeBonus = function(array, bonusPerCorrect) {
+      var corrects = $scope.computeNumCorrects(array);
+      return Math.max(0, (corrects - (array.length - corrects)) * bonusPerCorrect);
+   }
+
+   $scope.computeNumCorrects = function(array) {
+      return array.reduce(function(sum, element) {
+         return sum += element.correct;
+      }, 0);
+   }
+
+
+   /* logging */
 
    function cleanUpModel(array) {
       var output = $.extend([], array);
@@ -148,7 +182,6 @@ app.controller('recognitionCtrl', function($scope) {
    }
 
    $scope.submitAndContinue = function() {
-      state.firebase.child("/recognition/tabs").set(cleanUpModel($scope.tabs))
       $scope.goToNextPage();
    }
 })

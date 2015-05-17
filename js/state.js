@@ -4,6 +4,7 @@ var state = {
    "serverURL": "localhost:8888",
    //"serverURL": "tequila.cs.ubc.ca/stencil",
    "bonusPerTrial": 0.1,
+   "bonusPerTab": 0.05,
    "bookmarkletCode": "",
    "email": "lotaculi",
    //"email": "",
@@ -11,7 +12,7 @@ var state = {
    "condition": "",
 
    // site content and navigation
-   "page": 2,
+   "page": 4,
    "pages": [{
       "number": 0,
       "title": "Consent Form",
