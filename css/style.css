@@ -192,3 +192,16 @@ table.spaced .row-label {
 div.inline-block {
     display: inline-block;
 }
+
+img.interface {
+    display: block;
+    max-height: 300px;
+    max-width: 536px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+#feedback {
+    width: 600px;
+    height: 200px;
+}

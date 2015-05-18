@@ -1,96 +1,94 @@
 <form name="preferenceQuestionnaire" ng-controller="preferenceCtrl">
-
-  <div class="form-group">
-    <label>In the customization interface you used in this experiment, how easy or hard was it to find the settings you were looking for? </label>
-    <div class="likert-scale">
-      <span class="outer-label">difficult</span>
-      <label class="step">
-        <input type="radio" ng-model="data.easeOfUse" value="-3">
-        <br>
-        <div class="legend">-3</div>
-      </label>
-      <label class="step">
-        <input type="radio" ng-model="data.easeOfUse" value="-2">
-        <br>
-        <div class="legend">-2</div>
-      </label>
-      <label class="step">
-        <input type="radio" ng-model="data.easeOfUse" value="-1">
-        <br>
-        <div class="legend">-1</div>
-      </label>
-      <label class="step">
-        <input type="radio" ng-model="data.easeOfUse" value="0">
-        <br>
-        <div class="legend">0</div>
-      </label>
-      <label class="step">
-        <input type="radio" ng-model="data.easeOfUse" value="1">
-        <br>
-        <div class="legend">1</div>
-      </label>
-      <label class="step">
-        <input type="radio" ng-model="data.easeOfUse" value="2">
-        <br>
-        <div class="legend">2</div>
-      </label>
-      <label class="step">
-        <input type="radio" ng-model="data.easeOfUse" value="3">
-        <br>
-        <div class="legend">3</div>
-      </label>
-      <span class="outer-label">easy</span>
+    <label>Here is the customization interface that you've used in this experiment:</label>
+    <br>
+    <img class="interface" ng-src="/img/interface-{{state.condition}}.png">
+    <div class="form-group">
+        <label>In this customization interface, how easy or hard was it to find the settings you were looking for? </label>
+        <div class="likert-scale">
+            <span class="outer-label">difficult</span>
+            <label class="step">
+                <input type="radio" ng-model="data.easeOfUse" value="-3">
+                <br>
+                <div class="legend">-3</div>
+            </label>
+            <label class="step">
+                <input type="radio" ng-model="data.easeOfUse" value="-2">
+                <br>
+                <div class="legend">-2</div>
+            </label>
+            <label class="step">
+                <input type="radio" ng-model="data.easeOfUse" value="-1">
+                <br>
+                <div class="legend">-1</div>
+            </label>
+            <label class="step">
+                <input type="radio" ng-model="data.easeOfUse" value="0">
+                <br>
+                <div class="legend">0</div>
+            </label>
+            <label class="step">
+                <input type="radio" ng-model="data.easeOfUse" value="1">
+                <br>
+                <div class="legend">1</div>
+            </label>
+            <label class="step">
+                <input type="radio" ng-model="data.easeOfUse" value="2">
+                <br>
+                <div class="legend">2</div>
+            </label>
+            <label class="step">
+                <input type="radio" ng-model="data.easeOfUse" value="3">
+                <br>
+                <div class="legend">3</div>
+            </label>
+            <span class="outer-label">easy</span>
+        </div>
     </div>
-  </div>
-
-  <div class="form-group">
-    <label> Please rate how you liked or disliked the customization interface you’ve used in this experiment: </label>
-    <div class="likert-scale">
-      <span class="outer-label">didn't like it</span>
-      <label class="step">
-        <input type="radio" ng-model="data.liking" value="-3">
-        <br>
-        <div class="legend">-3</div>
-      </label>
-      <label class="step">
-        <input type="radio" ng-model="data.liking" value="-2">
-        <br>
-        <div class="legend">-2</div>
-      </label>
-      <label class="step">
-        <input type="radio" ng-model="data.liking" value="-1">
-        <br>
-        <div class="legend">-1</div>
-      </label>
-      <label class="step">
-        <input type="radio" ng-model="data.liking" value="0">
-        <br>
-        <div class="legend">0</div>
-      </label>
-      <label class="step">
-        <input type="radio" ng-model="data.liking" value="1">
-        <br>
-        <div class="legend">1</div>
-      </label>
-      <label class="step">
-        <input type="radio" ng-model="data.liking" value="2">
-        <br>
-        <div class="legend">2</div>
-      </label>
-      <label class="step">
-        <input type="radio" ng-model="data.liking" value="3">
-        <br>
-        <div class="legend">3</div>
-      </label>
-      <span class="outer-label">liked it</span>
+    <div class="form-group">
+        <label> Please rate how you liked or disliked this customization interface: </label>
+        <div class="likert-scale">
+            <span class="outer-label">didn't like it</span>
+            <label class="step">
+                <input type="radio" ng-model="data.liking" value="-3">
+                <br>
+                <div class="legend">-3</div>
+            </label>
+            <label class="step">
+                <input type="radio" ng-model="data.liking" value="-2">
+                <br>
+                <div class="legend">-2</div>
+            </label>
+            <label class="step">
+                <input type="radio" ng-model="data.liking" value="-1">
+                <br>
+                <div class="legend">-1</div>
+            </label>
+            <label class="step">
+                <input type="radio" ng-model="data.liking" value="0">
+                <br>
+                <div class="legend">0</div>
+            </label>
+            <label class="step">
+                <input type="radio" ng-model="data.liking" value="1">
+                <br>
+                <div class="legend">1</div>
+            </label>
+            <label class="step">
+                <input type="radio" ng-model="data.liking" value="2">
+                <br>
+                <div class="legend">2</div>
+            </label>
+            <label class="step">
+                <input type="radio" ng-model="data.liking" value="3">
+                <br>
+                <div class="legend">3</div>
+            </label>
+            <span class="outer-label">liked it</span>
+        </div>
     </div>
-  </div>
-
-  <div class="form-group">
-    <label>Please share your feedback with us on this software: What did you like about it? What could be improved?</label>
-    <textarea class="form-control" ng-model="data.feedback"></textarea>
-  </div>
-
-  <button class="btn btn-primary" ng-click="submitAndContinue()" ng-disabled="!isDataValid()"> Submit and continue </button>
-
+    <div class="form-group">
+        <label>Please share your feedback with us on this customization interface: What did you like about it? What could be improved?</label>
+        <textarea id="feedback" class="form-control" ng-model="data.feedback"></textarea>
+    </div>
+    <button class="btn btn-primary" ng-click="submitAndContinue()" ng-disabled="!isDataValid()"> Submit and continue </button>
 </form>

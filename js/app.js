@@ -13,6 +13,9 @@ app.run(function($window, $http) {
       $window.state.email = generateRandomString(8);
    console.log("participant email:", $window.state.email)
 
+   // randomly assign participant to one condition
+   state.condition = Math.floor(Math.random() * 4);
+
    // store the ID in firebase (will be checked from my software on wunderlist.com)
    state.firebase = new Firebase("https://incandescent-torch-4042.firebaseio.com/stencil-experiment/mturk/" + state.email);
    state.firebase.child("/condition").set(Math.floor(Math.random() * 4))
