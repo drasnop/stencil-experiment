@@ -131,43 +131,64 @@ app.controller('recognitionCtrl', function($scope) {
    generateOptions();
 
    var fakeOptions = [{
-      "name": "General",
+      "label": "Show details panel when adding an item",
       "present": false,
       "remembered": null
    }, {
-      "name": "Shortcuts",
+      "label": "Time zone",
+      "values": [{
+         "label": "EST (GMT-5)"
+      }],
       "present": false,
       "remembered": null
    }, {
-      "name": "Smart Lists",
+      "label": "Confirm before deleting list",
       "present": false,
       "remembered": null
    }, {
-      "name": "Notifications",
+      "label": "Open 'Upcoming' Smart List",
+      "values": [{
+         "label": "CTRL + 7"
+      }],
       "present": false,
       "remembered": null
    }, {
-      "name": "Account",
+      "label": "Print selected list",
+      "values": [{
+         "label": "CTRL + P"
+      }],
       "present": false,
       "remembered": null
    }, {
-      "name": "Display",
+      "label": "Edit item details",
+      "values": [{
+         "label": "CTRL + E"
+      }],
       "present": false,
       "remembered": null
    }, {
-      "name": "Sounds",
+      "label": "Open sharing preferences",
+      "values": [{
+         "label": "CTRL + S"
+      }],
       "present": false,
       "remembered": null
    }, {
-      "name": "Sync",
+      "label": "Tomorrow",
+      "values": [{
+         "label": "visible"
+      }],
       "present": false,
       "remembered": null
    }, {
-      "name": "Reminders",
+      "label": "Overdue",
+      "values": [{
+         "label": "visible"
+      }],
       "present": false,
       "remembered": null
    }, {
-      "name": "Security",
+      "label": "SMS Notifications",
       "present": false,
       "remembered": null
    }];
