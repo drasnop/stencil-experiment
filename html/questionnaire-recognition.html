@@ -7,7 +7,7 @@
         <table class="spaced">
             <tr ng-repeat="tab in tabs">
                 <td>
-                    <label>{{tab.name}}</label>
+                    <span class="row-label">{{tab.name}}</span>
                 </td>
                 <td class="inline-radio">
                     <label>
@@ -30,7 +30,7 @@
         <table class="spaced">
             <tr ng-repeat="option in options">
                 <td>
-                    <label>{{printOption(option)}}</label>
+                    <span class="row-label">{{printOption(option)}}</span>
                 </td>
                 <td class="inline-radio">
                     <label>

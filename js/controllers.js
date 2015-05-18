@@ -135,7 +135,7 @@ app.controller('recognitionCtrl', function($scope) {
       "present": false,
       "remembered": null
    }, {
-      "label": "Time zone",
+      "label": "Time Zone",
       "values": [{
          "label": "EST (GMT-5)"
       }],
@@ -153,21 +153,21 @@ app.controller('recognitionCtrl', function($scope) {
       "present": false,
       "remembered": null
    }, {
-      "label": "Print selected list",
+      "label": "Print Selected List",
       "values": [{
          "label": "CTRL + P"
       }],
       "present": false,
       "remembered": null
    }, {
-      "label": "Edit item details",
+      "label": "Edit Item Details",
       "values": [{
          "label": "CTRL + E"
       }],
       "present": false,
       "remembered": null
    }, {
-      "label": "Open sharing preferences",
+      "label": "Open Sharing Preferences",
       "values": [{
          "label": "CTRL + S"
       }],
@@ -232,7 +232,11 @@ app.controller('recognitionCtrl', function($scope) {
             shuffleArray(allowedOptions);
             Array.prototype.push.apply(realOptions, allowedOptions.slice(0, numOptionsPerTab[tabName]));
          }
-         console.log(realOptions)
+
+         // 2c: set all these options as 'present'
+         realOptions.forEach(function(option) {
+            option.present = true;
+         });
 
          // 3: randomly merge real and fake options
          Array.prototype.push.apply(realOptions, fakeOptions);
@@ -250,13 +254,15 @@ app.controller('recognitionCtrl', function($scope) {
    $scope.submitTabs = function() {
       state.tabsSubmitted = true;
       check($scope.tabs);
-      state.firebase.child("/recognition/tabs").set(cleanUpModel($scope.tabs));
+      state.firebase.child("/recognition/tabs/responses").set(cleanUpModel($scope.tabs));
+      state.firebase.child("/recognition/tabs/score").set($scope.computeNumCorrects($scope.tabs));
    }
 
    $scope.submitOptions = function() {
       state.optionsSubmitted = true;
       check($scope.options);
-      state.firebase.child("/recognition/options").set(cleanUpModel($scope.options));
+      state.firebase.child("/recognition/options/responses").set(cleanUpModel($scope.options));
+      state.firebase.child("/recognition/options/score").set($scope.computeNumCorrects($scope.options));
    }
 
 
