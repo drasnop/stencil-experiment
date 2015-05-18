@@ -1,59 +1,49 @@
 <form name="recognitionQuestionnaire" ng-controller="recognitionCtrl">
-
-  <div class="form-group">
-    <label> The settings menu you used was organized into tabs. Please select the tabs that you remember in the list below:
-      <br>
-      <span class="info">(note: some of these do <u>not</u> appear in Wunderlist! You will receive an extra <span class="money green">{{state.bonusPerTab | currency : "$" : 2}}</span> for each correct response, minus <span class="money red">{{state.bonusPerTab | currency : "$" : 2}}</span> for each incorrect response, but not less than $0.00.)</span>
-    </label>
-
-    <table class="spaced">
-      <tr ng-repeat="tab in tabs">
-        <td>
-          <label>{{tab.name}}</label>
-        </td>
-        <td class="inline-radio">
-          <label>
-            <input type="radio" ng-model="tab.remembered" ng-value="{{true}}" ng-disabled="state.tabsSubmitted">Yes</label>
-        </td>
-        <td class="inline-radio">
-          <label>
-            <input type="radio" ng-model="tab.remembered" ng-value="{{false}}" ng-disabled="state.tabsSubmitted">No</label>
-        </td>
-      </tr>
-    </table>
-
-    <button class="btn btn-default" ng-disabled="!isTabDataValid() || state.tabsSubmitted" ng-click="submitTabs()">Submit</button>
-    <span ng-if="state.tabsSubmitted">You got {{computeNumCorrects(tabs)}} out of {{tabs.length}} correct answers. Your additional bonus is {{tabsBonus() | currency : "$" : 2}}.</span>
-
-  </div>
-
-  <div class="form-group">
-    <label> Among the settings listed below, select the ones that you remember seeing in Wunderlist:
-      <br>
-      <span class="info">(note: some of these do <u>not</u> appear in Wunderlist! You will receive an extra <span class="money green">{{state.bonusPerOption | currency : "$" : 2}}</span> for each correct response, minus <span class="money red">{{state.bonusPerOption | currency : "$" : 2}}</span> for each incorrect response, but not less than $0.00.)</span>
-    </label>
-
-    <table class="spaced">
-      <tr ng-repeat="option in options">
-        <td>
-          <label>{{option.name}}</label>
-        </td>
-        <td class="inline-radio">
-          <label>
-            <input type="radio" ng-model="option.remembered" ng-value="{{true}}" ng-disabled="state.optionsSubmitted">Yes</label>
-        </td>
-        <td class="inline-radio">
-          <label>
-            <input type="radio" ng-model="option.remembered" ng-value="{{false}}" ng-disabled="state.optionsSubmitted">No</label>
-        </td>
-      </tr>
-    </table>
-
-    <button class="btn btn-default" ng-disabled="!isOptionDataValid() || state.optionsSubmitted" ng-click="submitOptions()">Submit</button>
-    <span ng-if="state.optionsSubmitted">You got {{computeNumCorrects(options)}} out of {{options.length}} correct answers. Your additional bonus is {{optionsBonus() | currency : "$" : 2}}.</span>
-
-  </div>
-
-  <button class="btn btn-primary" ng-click="submitAndContinue()" ng-if="state.tabsSubmitted && state.optionsSubmitted"> Continue </button>
-
+    <div class="form-group">
+        <label> The settings menu you used was organized into tabs. Please select the tabs that you remember in the list below:
+            <br>
+            <span class="info">(note: some of these do <u>not</u> appear in Wunderlist! You will receive an extra <span class="money green">{{state.bonusPerTab | currency : "$" : 2}}</span> for each correct response, minus <span class="money red">{{state.bonusPerTab | currency : "$" : 2}}</span> for each incorrect response, but not less than $0.00.)</span>
+        </label>
+        <table class="spaced">
+            <tr ng-repeat="tab in tabs">
+                <td>
+                    <label>{{tab.name}}</label>
+                </td>
+                <td class="inline-radio">
+                    <label>
+                        <input type="radio" ng-model="tab.remembered" ng-value="{{true}}" ng-disabled="state.tabsSubmitted">Yes</label>
+                </td>
+                <td class="inline-radio">
+                    <label>
+                        <input type="radio" ng-model="tab.remembered" ng-value="{{false}}" ng-disabled="state.tabsSubmitted">No</label>
+                </td>
+            </tr>
+        </table>
+        <button class="btn btn-default" ng-disabled="!isTabDataValid() || state.tabsSubmitted" ng-click="submitTabs()">Submit</button>
+        <span ng-if="state.tabsSubmitted">You got {{computeNumCorrects(tabs)}} out of {{tabs.length}} correct answers. Your additional bonus is {{tabsBonus() | currency : "$" : 2}}.</span>
+    </div>
+    <div class="form-group">
+        <label> Among the settings listed below, select the ones that you remember seeing in Wunderlist:
+            <br>
+            <span class="info">(note: some of these do <u>not</u> appear in Wunderlist! You will receive an extra <span class="money green">{{state.bonusPerOption | currency : "$" : 2}}</span> for each correct response, minus <span class="money red">{{state.bonusPerOption | currency : "$" : 2}}</span> for each incorrect response, but not less than $0.00.)</span>
+        </label>
+        <table class="spaced">
+            <tr ng-repeat="option in options">
+                <td>
+                    <label>{{printOption(option)}}</label>
+                </td>
+                <td class="inline-radio">
+                    <label>
+                        <input type="radio" ng-model="option.remembered" ng-value="{{true}}" ng-disabled="state.optionsSubmitted">Yes</label>
+                </td>
+                <td class="inline-radio">
+                    <label>
+                        <input type="radio" ng-model="option.remembered" ng-value="{{false}}" ng-disabled="state.optionsSubmitted">No</label>
+                </td>
+            </tr>
+        </table>
+        <button class="btn btn-default" ng-disabled="!isOptionDataValid() || state.optionsSubmitted" ng-click="submitOptions()">Submit</button>
+        <span ng-if="state.optionsSubmitted">You got {{computeNumCorrects(options)}} out of {{options.length}} correct answers. Your additional bonus is {{optionsBonus() | currency : "$" : 2}}.</span>
+    </div>
+    <button class="btn btn-primary" ng-click="submitAndContinue()" ng-if="state.tabsSubmitted && state.optionsSubmitted"> Continue </button>
 </form>

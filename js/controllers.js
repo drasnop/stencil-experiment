@@ -127,7 +127,8 @@ app.controller('recognitionCtrl', function($scope) {
       return $scope.computeBonus($scope.tabs, state.bonusPerTab);
    }
 
-   $scope.options = generateOptions();
+   // dynamically generate options, mixing randomly selected real ones and fake ones
+   generateOptions();
 
    var fakeOptions = [{
       "name": "General",
@@ -187,20 +188,20 @@ app.controller('recognitionCtrl', function($scope) {
 
    function generateOptions() {
       state.firebase.child('/tabs').once("value", function(tabsSnapshot) {
-         // 1: retrieve all the tabs
+         // 1: retrieve all the tabs, with their corrresponding options
          var tabs = tabsSnapshot.val();
          console.log("experiment tabs retrieved", tabs);
 
-         // select one third of options per tab, with a maximum of 4
+         // 2a: select one third of options per tab, with a maximum of 4
          var numOptionsPerTab = {
             "General": 3,
             "Shortcuts": 4,
-            "Smartlists": 2,
+            "Smart Lists": 2,
             "Notifications": 1
          }
 
-         // 2: randomly pick an appropriate number of options in each tab, respecting some constraints
-         var optionsInTab = [];
+         // 2b: randomly pick an appropriate number of options in each tab, respecting some constraints
+         var realOptions = [];
          for (var tabName in tabs) {
             // get options from tab t, excluding the forbidden options
             // TODO filter and return, to create deep copy?
@@ -208,12 +209,22 @@ app.controller('recognitionCtrl', function($scope) {
 
             // randomly pick numOptionsPerTab[t] options      
             shuffleArray(allowedOptions);
-            optionsInTab[t] = allowedOptions.slice(0, numOptionsPerTab[tabName]);
+            Array.prototype.push.apply(realOptions, allowedOptions.slice(0, numOptionsPerTab[tabName]));
          }
+         console.log(realOptions)
+
+         // 3: randomly merge real and fake options
+         Array.prototype.push.apply(realOptions, fakeOptions);
+         $scope.options = shuffleArray(realOptions);
+         $scope.$apply();
       })
    }
 
    /* display of questionnaires */
+
+   $scope.printOption = function(option) {
+      return option.label + (option.values ? " [" + option.values[0].label + "]" : "");
+   }
 
    $scope.submitTabs = function() {
       state.tabsSubmitted = true;
