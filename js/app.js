@@ -25,15 +25,17 @@ app.run(function($window, $http) {
    state.firebase.child("/condition").set(state.condition)
 
    // retrieve bookmarklet code
-   $http.get("/bookmarklets/bookmarklet-setup.js").success(function(data) {
-      console.log("bookmarklet-setup retrieved successfully")
-
-      if (state.serverURL === "localhost:8888")
+   if (state.serverURL === "localhost:8888") {
+      $http.get("/bookmarklets/bookmarklet-setup.js").success(function(data) {
+         console.log("bookmarklet-setup retrieved successfully");
          state.bookmarkletCode = data.replace("tequila.cs.ubc.ca/stencil", "localhost:8888");
-      else
+      })
+   } else {
+      $http.get($window.location + "/bookmarklets/bookmarklet-setup.js").success(function(data) {
+         console.log("bookmarklet-setup retrieved successfully");
          state.bookmarkletCode = data;
-   })
-
+      })
+   }
 
    // helper
    function generateRandomString(length) {
