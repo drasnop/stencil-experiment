@@ -41,4 +41,4 @@
 <label for="consent"><u>By checking this box, I indicate that I consent to participate in this study.</u></label>
 <br />
 
-<button class="btn btn-primary" ng-if="state.consentGiven" ng-click="goToNextPage()"> Submit and Move On </button>
+<button class="btn btn-primary" ng-if="state.consentGiven" ng-click="initializeParticipant(); goToNextPage();"> Submit and Move On </button>
