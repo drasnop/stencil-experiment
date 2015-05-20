@@ -61,6 +61,12 @@
     margin-top: 20px;
 }
 
+img.choose-lists {
+    display: block;
+    height: 300px;
+    margin: 20px 0;
+}
+
 .help-link {
     /*color: #0088CC;*/
     

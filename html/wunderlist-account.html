@@ -1,46 +1,36 @@
 <p> For this experiment, we need you to create a <u>temporary</u> account on <a href="//www.wunderlist.com" target="_blank">Wunderlist.com</a>, a popular todo-list app.
-  <br><small>It will be deleted at the end of this experiment.</small>
-  <small> <span class="help-link" ng-click="alreadyUser= !alreadyUser">I already have an account</span><br>
+    <br><small>It will be deleted at the end of this experiment.</small>
+    <small> <span class="help-link" ng-click="alreadyUser= !alreadyUser">I already have an account</span><br>
   <span class="help" ng-show="alreadyUser"> If you are already a Wunderlist user, we recommend that you create another account for this experiment. Log out from your regular account before performing the steps below. </span></small> </p>
-
 <br>
 <ul>
-  <li>Go to the <a href="//www.wunderlist.com/signup?redirect_url=/webapp" target="_blank">sign up page of Wunderlist</a></li>
-  <li>Fill in the registration form:
-    <table class="table">
-      <tr>
-        <td>Name: </td>
-        <td><b>Ann Onymous</b></td>
-      </tr>
-      <tr>
-        <td>Email: </td>
-        <td><b>{{state.email}}@gmail.com</b></td>
-      </tr>
-      <tr>
-        <td>Password: </td>
-        <td><b>experiment</b></td>
-      </tr>
-    </table>
-  </li>
-  <li>Click "Create Free Account"</li>
+    <li>Go to the <a href="//www.wunderlist.com/signup?redirect_url=/webapp" target="_blank">sign up page of Wunderlist</a></li>
+    <li>Fill in the registration form:
+        <table class="table">
+            <tr>
+                <td>Name: </td>
+                <td><b>Ann Onymous</b></td>
+            </tr>
+            <tr>
+                <td>Email: </td>
+                <td><b>{{state.email}}@gmail.com</b></td>
+            </tr>
+            <tr>
+                <td>Password: </td>
+                <td><b>experiment</b></td>
+            </tr>
+        </table>
+    </li>
+    <li>Click "Create Free Account"</li>
 </ul>
-
 <br>
 <p>The Wunderlist web app should now load. <small>(Otherwise, you can access it <a href="//www.wunderlist.com/webapp#/chooseLists" target="_blank">here</a>)</small></p>
-
 <ul>
-  <li>In the menu that appears, select 3 lists:
-    <ul>
-      <li><b>Groceries</b></li>
-      <li><b>Travel</b></li>
-      <li><b>Work</b></li>
-    </ul>
-  </li>
-  <li>Click "Get Started"</li>
-  <li>Click on "Inbox" in the top left corner, then reload the page (F5 or CTRL+R) to get rid of the blue pop-ups tutorial.</li>
+    <li>Select 3 lists: Groceries, Travel, Work
+        <img class="choose-lists" src="img/choose-lists.png">
+    </li>
+    <li>Click on <b>Inbox</b> in the top left corner of the page</li>
+    <li>Reload the page (F5 or CTRL+R) to get rid of the blue pop-ups tutorial.</li>
 </ul>
-
-<div class="continue">
-  <span> Alright, you are all set! Let's move on. </span>
-  <button class="btn btn-primary" ng-click="goToNextPage()">Continue</button>
-</div>
+<br>
+<button class="btn btn-primary" ng-click="goToNextPage()">Continue</button>
