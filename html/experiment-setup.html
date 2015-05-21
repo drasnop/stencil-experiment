@@ -16,7 +16,11 @@
       <span class="help" ng-show="bookmarkRationale"> It will be used to retrieve some file necessary to setup the experiment software in Wunderlist.<br>You will be able to remove this bookmark at the end of the experiment <small>(by right-clicking on it, and choosing "Delete" from the menu)</small></span>
     </li>
 
-    <li>Drag-and-drop this bookmark to an empty area in your bookmark bar:
+    <li>Drag-and-drop this bookmark to an empty area in your bookmark bar: <span class="help-link" ng-click="howBookmarkBar= !howBookmarkBar">I don't have a bookmark bar</span>
+    <br>
+    <span class="help" ng-show="howBookmarkBar"> In <b>Chrome</b>, click on the menu icon at the top right of the screen, then choose Bookmarks > Show bookmarks bar (or press <b>Ctrl+Shift+B</b>)<br>
+  In <b>Firfox</b>, click the menu icon at the top right of the screen, and choose Customize. Click the Show / Hide Toolbars dropdown menu at the bottom of the screen and select Bookmarks Toolbar. Click the green Exit Customize button. <br>
+  In <b>Internet Explorer</b>, right-click on the title bar at the top of the window, and choose "Favorites bar" in the contextual menu.</span>
       <br>
       <img id="instructionsBookmark" src="img/drag_bookmark.png">
       <a class="bookmark" ng-href="{{state.bookmarkletCode}}"><img src="img/bookmark.png">Setup experiment</a>

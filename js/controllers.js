@@ -42,6 +42,7 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
          return string;
       }
    }
+   $scope.initializeParticipant();
 
 
    /* basic utilities function to manage progress */
@@ -68,6 +69,12 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
          angular.element("body").scope().$apply();
       })
 
+   }
+
+   $scope.additionalFeedback = "";
+   $scope.submitAdditionalFeedback = function() {
+      console.log($scope.additionalFeedback)
+      state.firebase.child("/additionalFeedback").set($scope.additionalFeedback);
    }
 
    $scope.pageLinkClicked = function(page) {
@@ -355,5 +362,14 @@ app.controller('recognitionCtrl', function($scope) {
 
    $scope.submitAndContinue = function() {
       $scope.goToNextPage();
+   }
+})
+
+app.controller('doneCtrl', function($scope) {
+   $scope.data = {};
+
+   $scope.submit = function() {
+      console.log($scope.data)
+      state.firebase.child("/additionalFeedback").set($scope.data.additionalFeedback)
    }
 })

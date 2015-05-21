@@ -44,7 +44,7 @@
 }
 
 #content li {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 #content small {
@@ -79,7 +79,7 @@ img.choose-lists {
 }
 
 .help {
-    color: #82BF82;
+    color: #999;
 }
 
 .bookmark {
@@ -207,7 +207,7 @@ img.interface {
     margin-bottom: 25px;
 }
 
-#feedback {
+.feedback {
     width: 600px;
     height: 200px;
 }

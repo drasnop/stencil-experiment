@@ -1,3 +1,7 @@
-<p>Congratulations! You can now return to the HIT page on Mechanical Turk, and input your personal code to validate the HIT:</p>
-<p><strong>{{state.email}}</strong></p>
-<p>Thanks!</p>
+<div ng-controller="doneCtrl">
+    <p>Congratulations! You can now return to the HIT page on Mechanical Turk, and input your personal code to validate the HIT:</p>
+    <p><strong>{{state.email}}</strong></p>
+    <p>If you have any other comment or feedback on this study, please let us now :-) Thanks!</p>
+    <textarea class="form-control feedback" ng-model="data.additionalFeedback"></textarea>
+    <button class="btn btn-default" ng-click="submit()"> Submit </button>
+</div>

@@ -1,17 +1,14 @@
 <p>Follow the instructions given by the popups on the Wunderlist page.</p>
 <p>
-  Once you have completed the tutorial and the experiment on the Wunderlist page, click the button below to check your progress and your current bonus reward.
+    Once you have completed the tutorial and the experiment on the Wunderlist page, click the button below to check your progress and your current bonus reward.
 </p>
-
 <br>
 <button class="btn btn-default" ng-click="checkExperimentCompleted()">Check tutorial and experiment</button>
-
 <br>
 <div ng-if="state.experimentCheckClicked">
-  <div class="failure alert alert-danger" ng-if="!state.experimentCompleted">It seems that you haven't successfully completed the experiment. Please go back to the tab in which you opened Wunderlist and set up the experiment software, then follow the popup instructions until they tell you to come back here.</div>
-
-  <div class="continue" ng-if="state.experimentCompleted">
-    <span> Congratulations! You have successfully completed the tutorial and the experiment. Your current bonus reward is: {{state.bonus | currency: "$" : 2}}</span>
-    <button class="btn btn-primary" ng-click="goToNextPage()">Continue</button>
-  </div>
+    <div class="failure alert alert-danger" ng-if="!state.experimentCompleted">It seems that you haven't successfully completed the experiment. Please go back to the tab in which you opened Wunderlist and set up the experiment software, then follow the popup instructions until they tell you to come back here.</div>
+    <div class="continue" ng-if="state.experimentCompleted">
+        <span> Congratulations! You have successfully completed the tutorial and the experiment. Your current bonus reward is: <span class="money green">{{state.bonus | currency: "$" : 2}}</span></span>
+        <button class="btn btn-primary" ng-click="goToNextPage()">Continue</button>
+    </div>
 </div>
