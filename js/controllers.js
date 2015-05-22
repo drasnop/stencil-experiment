@@ -23,7 +23,7 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
       state.firebase.child("/condition").set(state.condition)
 
       // close connection to firebase, to avoid too many concurrent connections
-      Firebase.goOffline();
+      //Firebase.goOffline();
 
       // retrieve bookmarklet code
       $http.get("bookmarklets/bookmarklet-setup.js").success(function(data) {
@@ -267,30 +267,37 @@ app.controller('recognitionCtrl', function($scope) {
    }
 
    function generateOptions() {
-      state.firebase.child('/tabs').once("value", function(tabsSnapshot) {
-         // 1: retrieve all the tabs, with their corrresponding options
-         var tabs = tabsSnapshot.val();
-         console.log("experiment tabs retrieved", tabs);
+      state.firebase.child('/trials').once("value", function(trialsSnapshot) {
+         // 1: retrieve all the trials, with their corrresponding options
+         var trialsVal = trialsSnapshot.val();
+         var trials = [];
+         for (var i in trialsVal)
+            trials.push(trialsVal[i]);
+         console.log("experiment trials retrieved", trials);
 
-         // 2a: select one third of options per tab, with a maximum of 4
-         var numOptionsPerTab = {
-            "General": 3,
-            "Shortcuts": 4,
-            "Smart Lists": 2,
-            "Notifications": 1
+         // 2a: filter out unsuccessful trials, unless they are less than 5 successful ones
+         shuffleArray(trials);
+         i = 0;
+         while (i < trials.length && trials.length >= 5) {
+            if (!trials[i].success)
+               trials.splice(i, 1)
+            else
+               i++;
          }
+         console.log("trials selected", trials)
 
-         // 2b: randomly pick an appropriate number of options in each tab, respecting some constraints
-         var realOptions = [];
-         for (var tabName in tabs) {
-            // get options from tab t, excluding the forbidden options
-            // TODO filter and return, to create deep copy?
-            var allowedOptions = tabs[tabName].options;
+         // 2b: pick 5 successful trials
+         trials = trials.slice(0, 5);
+         var options = trials.map(function(trial) {
+            return trial.targetOption;
+         })
+         console.log("options selected", options)
 
-            // randomly pick numOptionsPerTab[t] options      
-            shuffleArray(allowedOptions);
-            Array.prototype.push.apply(realOptions, allowedOptions.slice(0, numOptionsPerTab[tabName]));
-         }
+
+         var realOptions = options.map(function(id) {
+            return state.options[id];
+         })
+         console.log(realOptions)
 
          // 2c: set all these options as 'present'
          realOptions.forEach(function(option) {
@@ -307,7 +314,8 @@ app.controller('recognitionCtrl', function($scope) {
    /* display of questionnaires */
 
    $scope.printOption = function(option) {
-      return option.label + (option.values ? " [" + option.values[0].label + "]" : "");
+      // we must check both if option.values exist (for fake options) and if it has length 0 (for wunderlist_options)
+      return option.label + (option.values && option.values.length ? " [" + option.values[0].label + "]" : "");
    }
 
    $scope.submitTabs = function() {

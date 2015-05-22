@@ -13,7 +13,7 @@ var state = {
    "condition": "",
 
    // site content and navigation
-   "page": 7,
+   "page": 4,
    //"page": 0,
    "pages": [{
       "number": 0,
@@ -53,7 +53,11 @@ var state = {
    "consentGiven": false,
    "experimentCheckClicked": false,
    "experimentCompleted": false,
-   "bonus": 0
+   "bonus": 0,
+
+   // data variables used for generating the recognition questionnaire
+   "tabs": [],
+   "options": {}
 }
 
 state.computeCurrentBonus = function() {
