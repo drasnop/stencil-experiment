@@ -22,6 +22,9 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
       state.firebase = new Firebase("https://incandescent-torch-4042.firebaseio.com/stencil-experiment/mturk/" + state.email);
       state.firebase.child("/condition").set(state.condition)
 
+      // close connection to firebase, to avoid too many concurrent connections
+      Firebase.goOffline();
+
       // retrieve bookmarklet code
       $http.get("bookmarklets/bookmarklet-setup.js").success(function(data) {
          console.log("bookmarklet-setup retrieved successfully");
@@ -57,13 +60,19 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
    }
 
    $scope.checkExperimentCompleted = function() {
+      // From this point on, the connection to the firebase should be maintained
+      // except if participants haven't completed the experiment yet, in which case we go offline again
+      Firebase.goOnline();
 
       // test if 10 trials were performed by this participant
       state.firebase.child('/trials').once("value", function(trialsSnapshot) {
          state.experimentCompleted = (trialsSnapshot.numChildren() >= 10);
          console.log(state.experimentCompleted ? "experiment completed!" : "Failure: experiment not completed")
 
-         state.computeCurrentBonusFromTrials(trialsSnapshot);
+         if (state.experimentCompleted)
+            state.computeCurrentBonusFromTrials(trialsSnapshot);
+         else
+            Firebase.goOffline();
 
          state.experimentCheckClicked = true;
          angular.element("body").scope().$apply();
@@ -366,10 +375,19 @@ app.controller('recognitionCtrl', function($scope) {
 })
 
 app.controller('doneCtrl', function($scope) {
+   // In case participants leave the tab open in their browser, close the connection
+   Firebase.goOffline();
+
    $scope.data = {};
 
    $scope.submit = function() {
-      console.log($scope.data)
-      state.firebase.child("/additionalFeedback").set($scope.data.additionalFeedback)
+      Firebase.goOnline();
+      state.firebase.child("/additionalFeedback").set($scope.data.additionalFeedback, function(error) {
+         if (error)
+            console.log("Error: couldn't upload", $scope.data.additionalFeedback)
+         else
+            console.log("successfully uploaded", $scope.data.additionalFeedback)
+         Firebase.goOffline();
+      })
    }
 })
