@@ -25,15 +25,6 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
       // close connection to firebase, to avoid too many concurrent connections
       //Firebase.goOffline();
 
-      // retrieve bookmarklet code
-      $http.get("bookmarklets/bookmarklet-setup.js").success(function(data) {
-         console.log("bookmarklet-setup retrieved successfully");
-         if (state.serverURL === "localhost:8888")
-            state.bookmarkletCode = data.replace("tequila.cs.ubc.ca/stencil", "localhost:8888");
-         else
-            state.bookmarkletCode = data;
-      })
-
       // helper
       function generateRandomString(length) {
          var string = "";
@@ -293,18 +284,21 @@ app.controller('recognitionCtrl', function($scope) {
          })
          console.log("options selected", options)
 
+         // 3a: find in which tab these 5 options appear
 
+
+         // 4: map option ids to the real options
          var realOptions = options.map(function(id) {
             return state.options[id];
          })
-         console.log(realOptions)
+         console.log("real options", realOptions)
 
-         // 2c: set all these options as 'present'
+         // 4: set all these options as 'present'
          realOptions.forEach(function(option) {
             option.present = true;
          });
 
-         // 3: randomly merge real and fake options
+         // 5: randomly merge real and fake options
          Array.prototype.push.apply(realOptions, fakeOptions);
          $scope.options = shuffleArray(realOptions);
          $scope.$apply();
