@@ -258,49 +258,16 @@ app.controller('recognitionCtrl', function($scope) {
    }
 
    function generateOptions() {
-      state.firebase.child('/trials').once("value", function(trialsSnapshot) {
-         // 1: retrieve all the trials, with their corrresponding options
-         var trialsVal = trialsSnapshot.val();
-         var trials = [];
-         for (var i in trialsVal)
-            trials.push(trialsVal[i]);
-         console.log("experiment trials retrieved", trials);
+      state.firebase.child('/optionsToRecognize').once("value", function(optionsSnapshot) {
+         var realOptions = optionsSnapshot.val();
 
-         // 2a: filter out unsuccessful trials, unless they are less than 5 successful ones
-         shuffleArray(trials);
-         i = 0;
-         while (i < trials.length && trials.length >= 5) {
-            if (!trials[i].success)
-               trials.splice(i, 1)
-            else
-               i++;
-         }
-         console.log("trials selected", trials)
-
-         // 2b: pick 5 successful trials
-         trials = trials.slice(0, 5);
-         var options = trials.map(function(trial) {
-            return trial.targetOption;
-         })
-         console.log("options selected", options)
-
-         // 3a: find in which tab these 5 options appear
-
-
-         // 4: map option ids to the real options
-         var realOptions = options.map(function(id) {
-            return state.options[id];
-         })
-         console.log("real options", realOptions)
-
-         // 4: set all these options as 'present'
+         // set all these options as 'present'
          realOptions.forEach(function(option) {
             option.present = true;
          });
 
-         // 5: randomly merge real and fake options
-         Array.prototype.push.apply(realOptions, fakeOptions);
-         $scope.options = shuffleArray(realOptions);
+         // randomly merge real and fake options
+         $scope.options = shuffleArray(realOptions.concat(fakeOptions));
          $scope.$apply();
       })
    }
