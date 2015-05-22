@@ -71,12 +71,6 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
 
    }
 
-   $scope.additionalFeedback = "";
-   $scope.submitAdditionalFeedback = function() {
-      console.log($scope.additionalFeedback)
-      state.firebase.child("/additionalFeedback").set($scope.additionalFeedback);
-   }
-
    $scope.pageLinkClicked = function(page) {
       if (page <= state.page) {
          state.page = page;
@@ -108,7 +102,7 @@ app.controller('demographicsCtrl', function($scope) {
 
    $scope.submitAndContinue = function() {
       console.log($scope.data)
-      state.firebase.child("/demographics").set($scope.data)
+      state.firebase.child("/questionnaires/demographics").set($scope.data)
       $scope.goToNextPage();
    }
 })
@@ -122,7 +116,7 @@ app.controller('preferenceCtrl', function($scope) {
 
    $scope.submitAndContinue = function() {
       console.log($scope.data)
-      state.firebase.child("/preference").set($scope.data)
+      state.firebase.child("/questionnaires/preference").set($scope.data)
       $scope.goToNextPage();
    }
 })
@@ -258,7 +252,7 @@ app.controller('recognitionCtrl', function($scope) {
    }
 
    function generateOptions() {
-      state.firebase.child('/optionsToRecognize').once("value", function(optionsSnapshot) {
+      state.firebase.child('/questionnaires/recognition/optionsToRecognize').once("value", function(optionsSnapshot) {
          var realOptions = optionsSnapshot.val();
 
          // set all these options as 'present'
@@ -282,15 +276,15 @@ app.controller('recognitionCtrl', function($scope) {
    $scope.submitTabs = function() {
       state.tabsSubmitted = true;
       check($scope.tabs);
-      state.firebase.child("/recognition/tabs/responses").set(cleanUpModel($scope.tabs));
-      state.firebase.child("/recognition/tabs/score").set($scope.computeNumCorrects($scope.tabs));
+      state.firebase.child("/questionnaires/recognition/tabs/responses").set(cleanUpModel($scope.tabs));
+      state.firebase.child("/questionnaires/recognition/tabs/score").set($scope.computeNumCorrects($scope.tabs));
    }
 
    $scope.submitOptions = function() {
       state.optionsSubmitted = true;
       check($scope.options);
-      state.firebase.child("/recognition/options/responses").set(cleanUpModel($scope.options));
-      state.firebase.child("/recognition/options/score").set($scope.computeNumCorrects($scope.options));
+      state.firebase.child("/questionnaires/recognition/options/responses").set(cleanUpModel($scope.options));
+      state.firebase.child("/questionnaires/recognition/options/score").set($scope.computeNumCorrects($scope.options));
    }
 
 
@@ -351,7 +345,7 @@ app.controller('doneCtrl', function($scope) {
 
    $scope.submit = function() {
       Firebase.goOnline();
-      state.firebase.child("/additionalFeedback").set($scope.data.additionalFeedback, function(error) {
+      state.firebase.child("/questionnaires/additionalFeedback").set($scope.data.additionalFeedback, function(error) {
          if (error)
             console.log("Error: couldn't upload", $scope.data.additionalFeedback)
          else
