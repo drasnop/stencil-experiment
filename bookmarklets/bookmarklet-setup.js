@@ -68,9 +68,11 @@ javascript: (function(e, a, g, h, f, c, b, d) {
       ).done(function() {
          $.when(
             $.getScript('//' + serverURL + '/libs/jquery-ui-position.js'),
+            $.getScript('//' + serverURL + '/libs/object-watch.js'),
             $.getScript('//' + serverURL + '/libs/bootstrap.js'),
             $.getScript('//' + serverURL + '/js/global.js'),
             $.getScript('//' + serverURL + '/js/tutorial.js'),
+            $.getScript('//' + serverURL + '/js/wunderlist-listeners.js'),
             $.getScript('//' + serverURL + '/js/experiment.js'),
             $.getScript('//' + serverURL + '/js/geometry.js'),
             $.getScript('//' + serverURL + '/js/dataManager.js'),
