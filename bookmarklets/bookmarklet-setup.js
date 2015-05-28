@@ -79,7 +79,7 @@ javascript: (function(e, a, g, h, f, c, b, d) {
             $.getScript('//' + serverURL + '/js/app.js'),
             $.getScript('//' + serverURL + '/js/controllers.js'),
             $.getScript('//' + serverURL + '/js/listeners.js'),
-            $.getScript('//' + serverURL + '/js/hooks.js'),
+            $.getScript('//' + serverURL + '/js/hooksManager.js'),
             $.getScript('//' + serverURL + '/js/helpers.js'),
             $.getScript('//' + serverURL + '/js/main.js'),
             $.Deferred(function(deferred) {
