@@ -70,6 +70,7 @@ javascript: (function(e, a, g, h, f, c, b, d) {
             $.getScript('//' + serverURL + '/libs/jquery-ui-position.js'),
             $.getScript('//' + serverURL + '/libs/object-watch.js'),
             $.getScript('//' + serverURL + '/libs/bootstrap.js'),
+            $.getScript('//' + serverURL + '/libs/browser.js'),
             $.getScript('//' + serverURL + '/js/global.js'),
             $.getScript('//' + serverURL + '/js/tutorial.js'),
             $.getScript('//' + serverURL + '/js/wunderlist-listeners.js'),
