@@ -18,8 +18,15 @@ javascript: (function(e, a, g, h, f, c, b, d) {
    window.jQuery = j;
    window.$ = window.jQuery;
 
-   if (window.location.href != "https://www.wunderlist.com/#/lists/inbox" && window.location.href != "https://www.wunderlist.com/webapp#/lists/inbox") {
-      alert("To setup the experiment software, you must:\n • drag-and-drop this bookmark in your bookmark bar\n • open a new tab\n • go to the page https://www.wunderlist.com/#/lists/inbox\n • when the page is fully loaded, click on this bookmark.");
+   if (window.location.href.indexOf("www.wunderlist.com") < 0) {
+      alert("To setup the experiment software, you must:\n • drag-and-drop this bookmark in your bookmark bar\n • open a new tab\n • go to the page https://www.wunderlist.com/\n • when the page is fully loaded, click on this bookmark.");
+      return;
+   }
+
+   /* set the location to the proper thing */
+   if (window.location.href !== "https://www.wunderlist.com/#/lists/inbox") {
+      alert("• This page is going to reload.\n• Once it is fully loaded, please click this bookmarklet again.");
+      window.location.assign("https://www.wunderlist.com/#/lists/inbox");
       return;
    }
 
