@@ -13,7 +13,7 @@ var state = {
    "condition": "",
 
    // site content and navigation
-   "page": 4,
+   "page": 0,
    //"page": 0,
    "pages": [{
       "number": 0,
