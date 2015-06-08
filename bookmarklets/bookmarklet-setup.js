@@ -25,7 +25,7 @@ javascript: (function(e, a, g, h, f, c, b, d) {
 
    /* set the location to the proper thing */
    if (window.location.href !== "https://www.wunderlist.com/#/lists/inbox") {
-      alert("• This page is going to reload.\n• Once it is fully loaded, please click this bookmarklet again.");
+      alert("• This page is going to reload.\n• Once it is fully loaded, please click this bookmark again.");
       window.location.assign("https://www.wunderlist.com/#/lists/inbox");
       return;
    }
