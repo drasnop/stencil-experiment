@@ -76,8 +76,17 @@ app.run(['$window', '$http', '$q', function($window, $http, $q) {
 
       /* tabs */
 
+      Object.defineProperty(state.tabs, "forEachNonBloat", {
+         value: function(callback) {
+            this.forEach(function(tab) {
+               if (!tab.bloat)
+                  callback(tab);
+            })
+         }
+      })
+
       // replace tab.option_ids by pointers to actual options
-      state.tabs.forEach(function(tab) {
+      state.tabs.forEachNonBloat(function(tab) {
          var tabOptions = tab.options.map(function(option_id) {
             return state.options[option_id];
          })
@@ -85,7 +94,7 @@ app.run(['$window', '$http', '$q', function($window, $http, $q) {
       })
 
       // add pointer to tab (and index in that tab) to options
-      state.tabs.forEach(function(tab) {
+      state.tabs.forEachNonBloat(function(tab) {
          for (var i = 0; i < tab.options.length; i++) {
             tab.options[i].tab = tab;
             // the display code only uses filteredIndex now, but this could be useful in the analysis
