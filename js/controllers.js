@@ -20,10 +20,10 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
 
       // store the ID + the condition in firebase (will be checked from my software on wunderlist.com)
       state.firebase = new Firebase("https://incandescent-torch-4042.firebaseio.com/stencil-experiment/mturk/" + state.email);
-      state.firebase.child("/condition").set(state.condition)
-
-      // close connection to firebase, to avoid too many concurrent connections
-      //Firebase.goOffline();
+      state.firebase.child("/condition").set(state.condition, function() {
+         // close connection to firebase, to avoid too many concurrent connections
+         //Firebase.goOffline();
+      })
 
       // helper
       function generateRandomString(length) {
@@ -36,6 +36,7 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
          return string;
       }
    }
+
    $scope.initializeParticipant();
 
 
