@@ -9,6 +9,12 @@ app.config([
 
 app.run(['$window', '$http', '$q', function($window, $http, $q) {
 
+   // abort if browser is not firefox or chrome
+   if (Browser.name != "Chrome" && Browser.name != "Firefox") {
+      alert("Fatal error! This experiment only works in Google Chrome or Mozilla Firefox. You won't be able to collect your reward. Please return this HIT.")
+      return;
+   }
+
    // retrieve bookmarklet code
    $http.get("bookmarklets/bookmarklet-setup.js").success(function(data) {
       console.log("bookmarklet-setup retrieved successfully");
