@@ -11,18 +11,25 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
          $window.state.email = generateRandomString(8);
       console.log("participant email:", $window.state.email)
 
-      // randomly assign participant to one interface and with opposite defaults or not
+      // assign participant to their interface, and radomly choose opposite defaults or not
       state.condition = {
-         "interface": 3,
-         //"interface": Math.floor(Math.random() * 4),
+         "interface": state.urlParams["interface"],
          "oppositeDefaults": (Math.random() < 0.5 ? false : true)
       }
 
-      // store the ID + the condition in firebase (will be checked from my software on wunderlist.com)
+      // get MTurk information about this participant
+      state.info = {
+         "worker_id": state.urlParams["worker_id"],
+         "assignment_id": state.urlParams["assignment_id"],
+      }
+
+      // store the email ID, the condition and the MTurk information in firebase (will be checked from my software on wunderlist.com)
       state.firebase = new Firebase("https://incandescent-torch-4042.firebaseio.com/stencil-experiment/mturk/" + state.email);
-      state.firebase.child("/condition").set(state.condition, function() {
-         // close connection to firebase, to avoid too many concurrent connections
-         //Firebase.goOffline();
+      state.firebase.child("/info").set(state.info, function() {
+         state.firebase.child("/condition").set(state.condition, function() {
+            // close connection to firebase, to avoid too many concurrent connections
+            //Firebase.goOffline();
+         })
       })
 
       // helper

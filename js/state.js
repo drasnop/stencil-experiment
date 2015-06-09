@@ -11,6 +11,7 @@ var state = {
    //"email": "",
    "firebase": "",
    "condition": "",
+   "urlParams": {},
 
    // site content and navigation
    "page": 0,

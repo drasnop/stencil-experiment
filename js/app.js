@@ -18,4 +18,15 @@ app.run(['$window', '$http', '$q', function($window, $http, $q) {
          state.bookmarkletCode = data;
    })
 
+   // retrieve information passed in the url and store them in state.urlParams
+   var match,
+      pl = /\+/g, // Regex for replacing addition symbol with a space
+      search = /([^&=]+)=?([^&]*)/g,
+      decode = function(s) {
+         return decodeURIComponent(s.replace(pl, " "));
+      },
+      query = $window.location.search.substring(1);
+
+   while ((match = search.exec(query)) !== null)
+      state.urlParams[decode(match[1])] = decode(match[2]);
 }])
