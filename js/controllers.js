@@ -13,7 +13,7 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
 
       // assign participant to their interface, and radomly choose opposite defaults or not
       state.condition = {
-         "interface": state.urlParams["interface"],
+         "interface": parseInt(state.urlParams["interface"]),
          "oppositeDefaults": (Math.random() < 0.5 ? false : true)
       }
       console.log(state.condition)
@@ -30,7 +30,7 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
       state.firebase.child("/info").set(state.info, function() {
          state.firebase.child("/condition").set(state.condition, function() {
             // close connection to firebase, to avoid too many concurrent connections
-            //Firebase.goOffline();
+            Firebase.goOffline();
          })
       })
 
@@ -46,7 +46,7 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
       }
    }
 
-   $scope.initializeParticipant();
+   //$scope.initializeParticipant();
 
 
    /* basic utilities function to manage progress */
