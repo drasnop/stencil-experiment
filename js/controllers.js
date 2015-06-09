@@ -16,12 +16,14 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
          "interface": state.urlParams["interface"],
          "oppositeDefaults": (Math.random() < 0.5 ? false : true)
       }
+      console.log(state.condition)
 
       // get MTurk information about this participant
       state.info = {
          "worker_id": state.urlParams["worker_id"],
          "assignment_id": state.urlParams["assignment_id"],
       }
+      console.log(state.info)
 
       // store the email ID, the condition and the MTurk information in firebase (will be checked from my software on wunderlist.com)
       state.firebase = new Firebase("https://incandescent-torch-4042.firebaseio.com/stencil-experiment/mturk/" + state.email);

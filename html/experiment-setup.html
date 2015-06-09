@@ -3,34 +3,31 @@
     <br>
     <span class="help" ng-show="howSSL"> In <b>Chrome</b>, click <u>Advanced</u> at the bottom of the text, then click <u>Proceed to tequila.cs.ubc.ca (unsafe)</u><br>
   In <b>Firfox</b>, click "I understand the risks" at the bottom, then "Add exception..." and "Confirm Security Exception"<br>
-  In <b>Internet Explorer</b>, click <u>Continue to this website (not recommended)</u>.</span>
+  In <b>Internet Explorer</b>, it's really complicated and probably not worth your time. You'd be better off installing Chrome or Firefox (general life advice).</span>
   </li>
-  <li>Paste the code displayed on that page here: <input type="text" ng-model="state.sslCode" ng-change="checkSSL()"></li>
+  <li>Paste the code displayed on that page here:
+    <input type="text" ng-model="state.sslCode" ng-change="checkSSL()">
+  </li>
 </ul>
 <br>
-
 <div ng-if="sslSuccess">
   <ul>
     <li>To conduct this experiment, we need you to add a bookmark to your bookmark bar. <span class="help-link" ng-click="bookmarkRationale= !bookmarkRationale">Why?</span>
       <br>
       <span class="help" ng-show="bookmarkRationale"> It will be used to retrieve some file necessary to setup the experiment software in Wunderlist.<br>You will be able to remove this bookmark at the end of the experiment <small>(by right-clicking on it, and choosing "Delete" from the menu)</small></span>
     </li>
-
     <li>Drag-and-drop this bookmark to an empty area in your bookmark bar: <span class="help-link" ng-click="howBookmarkBar= !howBookmarkBar">I don't have a bookmark bar</span>
-    <br>
-    <span class="help" ng-show="howBookmarkBar"> In <b>Chrome</b>, click on the menu icon at the top right of the screen, then choose Bookmarks > Show bookmarks bar (or press <b>Ctrl+Shift+B</b>)<br>
-  In <b>Firfox</b>, click the menu icon at the top right of the screen, and choose Customize. Click the Show / Hide Toolbars dropdown menu at the bottom of the screen and select Bookmarks Toolbar. Click the green Exit Customize button. <br>
-  In <b>Internet Explorer</b>, right-click on the title bar at the top of the window, and choose "Favorites bar" in the contextual menu.</span>
+      <br>
+      <span class="help" ng-show="howBookmarkBar"> In <b>Chrome</b>, click on the menu icon at the top right of the screen, then choose Bookmarks > Show bookmarks bar (or press <b>Ctrl+Shift+B</b>)<br>
+  In <b>Firfox</b>, click the menu icon at the top right of the screen, and choose Customize. Click the Show / Hide Toolbars dropdown menu at the bottom of the screen and select Bookmarks Toolbar. Click the green Exit Customize button. </span>
       <br>
       <img id="instructionsBookmark" src="img/drag_bookmark.png">
       <a class="bookmark" ng-href="{{state.bookmarkletCode}}"><img src="img/bookmark.png">Set up experiment</a>
     </li>
-
     <li>Go to the <b>Wunderlist</b> tab, and click on the bookmark you've just installed.</li>
     <li>Follow the instructions. Eventually, A "Setup complete!" popup should appear. <span class="help-link" ng-click="setupFailure= !setupFailure">Not working?</span>
-    <br><span class="help" ng-show="setupFailure">Open <a href="//www.wunderlist.com/webapp#/lists/inbox" target="_blank">this page</a>, then click on the "Set up experiment" bookmark you've just added to your bookmark bar. Wait 10-20 seconds for the experiment software to load.</span>    
+      <br><span class="help" ng-show="setupFailure">Open <a href="//www.wunderlist.com/webapp#/lists/inbox" target="_blank">this page</a>, then click on the "Set up experiment" bookmark you've just added to your bookmark bar. Wait 10-20 seconds for the experiment software to load. <u>Note that this whole procedure only works if you're using Chrome or Firefox.</u></span>
     </li>
   </ul>
-
   <button class="btn btn-primary" ng-click="goToNextPage()">Continue</button>
 </div>
