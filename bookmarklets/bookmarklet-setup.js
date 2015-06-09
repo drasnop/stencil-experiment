@@ -18,24 +18,34 @@ javascript: (function(e, a, g, h, f, c, b, d) {
    window.jQuery = j;
    window.$ = window.jQuery;
 
-   if (window.location.href.indexOf("www.wunderlist.com") < 0) {
-      alert("To setup the experiment software, you must:\n • drag-and-drop this bookmark in your bookmark bar\n • open a new tab\n • go to the page https://www.wunderlist.com/\n • when the page is fully loaded, click on this bookmark.");
+   /* limit use to wunderlist */
+   if (window.location.hostname !== "www.wunderlist.com") {
+      alert("To setup the experiment software, you must:\n • drag-and-drop this bookmark in your bookmark bar\n • open a new tab\n • go to the page https://www.wunderlist.com/webapp\n • when the page is fully loaded, click on this bookmark.");
       return;
    }
 
-   /* set the location to the proper thing */
-   if (window.location.href !== "https://www.wunderlist.com/#/lists/inbox") {
+   /* set the location to the proper url, if necessary */
+   if (window.location.pathname !== "/webapp") {
       alert("• This page is going to reload.\n• Once it is fully loaded, please click this bookmark again.");
-      window.location.assign("https://www.wunderlist.com/#/lists/inbox");
+      window.location.assign("https://www.wunderlist.com/webapp#/lists/inbox");
       return;
    }
 
+   /* prevent multiple clicks */
    if (typeof longAndComplexVariableNameToCheckIfAlreadyClicked !== "undefined") {
       alert("Please wait 15-20 seconds to let the experiment software load.\n\nAfter this delay, if you don't see any changes, you can try to reload the page, then click on this bookmark again.");
       return;
    }
 
    window.longAndComplexVariableNameToCheckIfAlreadyClicked = true;
+
+
+   /* set the location to the inbox */
+   window.location.assign("https://www.wunderlist.com/webapp#/lists/inbox");
+
+   /* remove the first tutorial popup*/
+   $(".popover.AddItem").remove();
+
 
    setTimeout(function() {
       alert("The experiment software is loading... Please wait a few seconds.");
