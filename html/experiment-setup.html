@@ -23,12 +23,13 @@
   In <b>Internet Explorer</b>, right-click on the title bar at the top of the window, and choose "Favorites bar" in the contextual menu.</span>
       <br>
       <img id="instructionsBookmark" src="img/drag_bookmark.png">
-      <a class="bookmark" ng-href="{{state.bookmarkletCode}}"><img src="img/bookmark.png">Setup experiment</a>
+      <a class="bookmark" ng-href="{{state.bookmarkletCode}}"><img src="img/bookmark.png">Set up experiment</a>
     </li>
 
     <li>Go to the <b>Wunderlist</b> tab, and click on the bookmark you've just installed.</li>
-    <li>It should reload the page, then ask you to click it again.</li>
-    <li>A "Setup complete!" popup should appear.</li>
+    <li>Follow the instructions. Eventually, A "Setup complete!" popup should appear. <span class="help-link" ng-click="setupFailure= !setupFailure">Not working?</span>
+    <br><span class="help" ng-show="setupFailure">Open <a href="//www.wunderlist.com/webapp#/lists/inbox" target="_blank">this page</a>, then click on the "Set up experiment" bookmark you've just added to your bookmark bar. Wait 10-20 seconds for the experiment software to load.</span>    
+    </li>
   </ul>
 
   <button class="btn btn-primary" ng-click="goToNextPage()">Continue</button>
