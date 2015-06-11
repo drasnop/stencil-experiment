@@ -22,16 +22,19 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
       state.info = {
          "worker_id": state.urlParams["worker_id"],
          "assignment_id": state.urlParams["assignment_id"],
+         "timestamp": new Date().getTime()
       }
       console.log(state.info)
 
       // store the email ID, the condition and the MTurk information in firebase (will be checked from my software on wunderlist.com)
       state.firebase = new Firebase("https://incandescent-torch-4042.firebaseio.com/stencil-experiment/mturk/" + state.email);
-      state.firebase.child("/info").set(state.info, function() {
-         state.firebase.child("/condition").set(state.condition, function() {
-            // close connection to firebase, to avoid too many concurrent connections
-            Firebase.goOffline();
-         })
+      state.firebase.set({
+         "id": state.email,
+         "info": state.info,
+         "condition": state.condition
+      }, function() {
+         // close connection to firebase, to avoid too many concurrent connections
+         // Firebase.goOffline();
       })
 
       // helper
