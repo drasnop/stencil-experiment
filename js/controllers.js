@@ -26,6 +26,9 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
       }
       console.log(state.info)
 
+      // initialize future logging of time spent on pages
+      state.previousPageTimestamp = state.info.timestamp;
+
       // store the email ID, the condition and the MTurk information in firebase (will be checked from my software on wunderlist.com)
       state.firebase = new Firebase("https://incandescent-torch-4042.firebaseio.com/stencil-experiment/mturk/" + state.email);
       state.firebase.set({
@@ -91,6 +94,18 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
    }
 
    $scope.goToNextPage = function() {
+      // log time spent on previous page
+      var timestamp = new Date().getTime();
+
+      state.firebase.child('/instructions').push({
+         "page": state.page,
+         "duration": (timestamp - state.previousPageTimestamp) / 1000
+      })
+
+      // store timestamp for next page
+      state.previousPageTimestamp = timestamp;
+
+      // move to next page      
       state.page++;
       $window.scrollTo(0, 0);
    }
