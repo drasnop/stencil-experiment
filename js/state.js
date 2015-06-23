@@ -14,7 +14,7 @@ var state = {
    "urlParams": {},
 
    // site content and navigation
-   "page": 7,
+   "page": 5,
    //"page": 0,
    "pages": [{
       "number": 0,

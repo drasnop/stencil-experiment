@@ -155,6 +155,9 @@ app.controller('demographicsCtrl', function($scope) {
 })
 
 app.controller('preferenceCtrl', function($scope) {
+
+   $scope.likertScale = [-3, -2, -1, 0, 1, 2, 3];
+
    $scope.data = {};
 
    $scope.isDataValid = function() {
