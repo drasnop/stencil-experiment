@@ -52,18 +52,13 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
       }
    }
 
-   //$scope.initializeParticipant();
+   $scope.initializeParticipant();
 
 
    /* basic utilities function to manage progress */
 
    $scope.printConsentForm = function() {
       $window.print();
-   }
-
-   $scope.checkSSL = function() {
-      console.log(state.sslCode)
-      $scope.sslSuccess = (state.sslCode == 9876);
    }
 
    $scope.checkExperimentCompleted = function() {
@@ -110,6 +105,30 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
       $window.scrollTo(0, 0);
    }
 }])
+
+
+app.controller('setupCtrl', function($scope) {
+   $scope.data = {};
+
+   $scope.checkSSL = function() {
+      console.log(state.sslCode)
+      $scope.sslSuccess = (state.sslCode == 9876);
+   }
+
+   $scope.submit = function() {
+      Firebase.goOnline();
+
+      state.firebase.child("/questionnaires/problemFeedback").set($scope.data.problemFeedback, function(error) {
+         if (error)
+            console.log("Error: couldn't upload", $scope.data.problemFeedback)
+         else
+            console.log("successfully uploaded", $scope.data.problemFeedback)
+
+         // Close connection, in case participants keep that tab open in their browser
+         Firebase.goOffline();
+      })
+   }
+})
 
 
 app.controller('demographicsCtrl', function($scope) {

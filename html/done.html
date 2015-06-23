@@ -1,8 +1,8 @@
 <div ng-controller="doneCtrl">
-    <p>Congratulations! You can now return to the HIT page on Mechanical Turk, and input your personal code to validate the HIT:</p>
-    <p><strong>{{state.email}}</strong></p>
-    <p>If you have any other comment or feedback on this study, please let us now :-)</p>
-    <textarea class="form-control feedback" ng-model="data.additionalFeedback"></textarea>
-    <button class="btn btn-default" ng-disabled="!data.additionalFeedback" ng-click="submit(); additionalFeedbackSubmitted=true;"> Submit </button>
-    <span ng-if="additionalFeedbackSubmitted">Thanks!</span>
+  <p>Congratulations! You can now return to the HIT page on Mechanical Turk, and input your personal code to validate the HIT:</p>
+  <p><strong>{{state.email}}</strong></p>
+  <p>If you have any other comment or feedback on this study, please let us know :-)</p>
+  <textarea class="form-control feedback" ng-model="data.additionalFeedback"></textarea>
+  <button class="btn btn-default" ng-disabled="!data.additionalFeedback" ng-click="submit(); additionalFeedbackSubmitted=true;"> Submit </button>
+  <span ng-if="additionalFeedbackSubmitted">Thanks!</span>
 </div>
