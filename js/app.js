@@ -50,21 +50,26 @@ app.run(['$window', '$http', '$q', function($window, $http, $q) {
          return;
       }
 
-
       // restore previous session
       state.email = localStorage.email;
       state.condition = localStorage.getObject('stencilExperimentCondition');
       state.info = localStorage.getObject('stencilExperimentInfo');
+
+      console.log("Restored participant email:", $window.state.email)
+      console.log("Restored", state.condition)
+      console.log("Restored", state.info)
+
+      // re-initialize
       state.firebase = new Firebase("https://incandescent-torch-4042.firebaseio.com/stencil-experiment/mturk/" + state.email);
       state.previousPageTimestamp = state.info.timestamp;
 
-      // move to the page that was stored
-      state.page = Number(localStorage.stencilExperimentPage) || 1;
+      // move to the last page that was stored
+      state.page = Number(localStorage.stencilExperimentPage);
    }
 }])
 
 
-/* helpers */
+/* Extend localStorage for storing objects */
 
 Storage.prototype.setObject = function(key, value) {
    this.setItem(key, JSON.stringify(value));

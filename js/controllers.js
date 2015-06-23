@@ -6,6 +6,13 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
 
    $scope.initializeParticipant = function() {
 
+      // don't re-initialize a participant that is already logged in
+      if (localStorage.email)
+         return;
+
+
+      /* 1. Generate */
+
       // generate a unique ID for each participant
       if ($window.state.email === "")
          $window.state.email = generateRandomString(8);
@@ -26,17 +33,27 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
       }
       console.log(state.info)
 
+
+      /* 2. Initialize */
+
       // initialize future logging of time spent on pages
       state.previousPageTimestamp = state.info.timestamp;
+      // connect to this participant's Firebase
+      state.firebase = new Firebase("https://incandescent-torch-4042.firebaseio.com/stencil-experiment/mturk/" + state.email);
 
 
-      // LOCAL: if this participant just started the experiment for the first time, store info
+      /* 3. Stores locally */
+
+      // LOCAL: if this participant started the experiment for the first time, store info
       localStorage.email = state.email;
       localStorage.setObject('stencilExperimentInfo', state.info);
       localStorage.setObject('stencilExperimentCondition', state.condition);
+      // NB: page will be stored in goToNextPage
+
+
+      /* 4. Stores remotely */
 
       // REMOTE: store the email ID, the condition and the MTurk information in firebase (will be checked from my software on wunderlist.com)
-      state.firebase = new Firebase("https://incandescent-torch-4042.firebaseio.com/stencil-experiment/mturk/" + state.email);
       state.firebase.set({
          "id": state.email,
          "info": state.info,
@@ -45,6 +62,7 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
          // close connection to firebase, to avoid too many concurrent connections
          // Firebase.goOffline();
       })
+
 
       // helper
       function generateRandomString(length) {
