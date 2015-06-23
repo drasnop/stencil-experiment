@@ -29,7 +29,13 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
       // initialize future logging of time spent on pages
       state.previousPageTimestamp = state.info.timestamp;
 
-      // store the email ID, the condition and the MTurk information in firebase (will be checked from my software on wunderlist.com)
+
+      // LOCAL: if this participant just started the experiment for the first time, store info
+      localStorage.email = state.email;
+      localStorage.setObject('stencilExperimentInfo', state.info);
+      localStorage.setObject('stencilExperimentCondition', state.condition);
+
+      // REMOTE: store the email ID, the condition and the MTurk information in firebase (will be checked from my software on wunderlist.com)
       state.firebase = new Firebase("https://incandescent-torch-4042.firebaseio.com/stencil-experiment/mturk/" + state.email);
       state.firebase.set({
          "id": state.email,
@@ -52,7 +58,7 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
       }
    }
 
-   $scope.initializeParticipant();
+   //$scope.initializeParticipant();
 
 
    /* basic utilities function to manage progress */
@@ -89,6 +95,7 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
    }
 
    $scope.goToNextPage = function() {
+
       // log time spent on previous page
       var timestamp = new Date().getTime();
 
@@ -100,9 +107,13 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
       // store timestamp for next page
       state.previousPageTimestamp = timestamp;
 
+
       // move to next page      
       state.page++;
       $window.scrollTo(0, 0);
+
+      // store progress locally, as a checkpoint for resumption
+      localStorage.stencilExperimentPage = state.page;
    }
 }])
 

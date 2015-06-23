@@ -35,4 +35,42 @@ app.run(['$window', '$http', '$q', function($window, $http, $q) {
 
    while ((match = search.exec(query)) !== null)
       state.urlParams[decode(match[1])] = decode(match[2]);
+
+
+   // if this is a returning participant
+   if (localStorage.stencilExperimentPage) {
+
+      // Only allow participants coming back with the same worker_id, assignment_id and interface condition
+      if ((state.urlParams.worker_id != localStorage.getObject("stencilExperimentInfo").worker_id) ||
+         (state.urlParams.assignment_id != localStorage.getObject("stencilExperimentInfo").assignment_id) ||
+         (state.urlParams.interface != localStorage.getObject("stencilExperimentCondition").interface)) {
+
+         $("body").empty();
+         alert("Sorry, you can participate only once in this experiment. Otherwise your HIT will be rejected.");
+         return;
+      }
+
+
+      // restore previous session
+      state.email = localStorage.email;
+      state.condition = localStorage.getObject('stencilExperimentCondition');
+      state.info = localStorage.getObject('stencilExperimentInfo');
+      state.firebase = new Firebase("https://incandescent-torch-4042.firebaseio.com/stencil-experiment/mturk/" + state.email);
+      state.previousPageTimestamp = state.info.timestamp;
+
+      // move to the page that was stored
+      state.page = Number(localStorage.stencilExperimentPage) || 1;
+   }
 }])
+
+
+/* helpers */
+
+Storage.prototype.setObject = function(key, value) {
+   this.setItem(key, JSON.stringify(value));
+}
+
+Storage.prototype.getObject = function(key) {
+   var value = this.getItem(key);
+   return value && JSON.parse(value);
+}
