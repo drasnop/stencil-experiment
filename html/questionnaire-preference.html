@@ -2,6 +2,7 @@
   <label>Here is the customization interface that you've used in this experiment:</label>
   <br>
   <img class="interface" ng-src="img/interface-{{state.condition.interface}}.png">
+
   <div class="form-group">
     <label>In this customization interface, how easy or hard was it to find the settings you were looking for? </label>
     <div class="likert-scale">
@@ -14,6 +15,7 @@
       <span class="outer-label">easy</span>
     </div>
   </div>
+
   <div class="form-group">
     <label> Please rate how you liked or disliked this customization interface: </label>
     <div class="likert-scale">
@@ -26,9 +28,41 @@
       <span class="outer-label">liked it</span>
     </div>
   </div>
+
+  <div class="form-group" ng-if="state.condition.interface === 0">
+    <label> How familiar are you with this <u>type</u> of customization interface? <span class="not-bold">(= settings panels in general) </span></label>
+    <div class="likert-scale">
+      <span class="outer-label">not familiar</span>
+      <label class="step" ng-repeat="step in likertScale">
+        <input type="radio" ng-model="data.familiarity" value="{{step}}">
+        <br>
+        <div class="legend">{{step}}</div>
+      </label>
+      <span class="outer-label">familiar</span>
+    </div>
+  </div>
+
+  <div class="form-group" ng-if="state.condition.interface > 0">
+    <label> During the experiment, when you were searching for the setting you had to change, you would generally:
+      <p class="small-whitespace not-bold">• try to find which highlighted element was related to that setting (visual search) </p>
+      <p class="small-whitespace not-bold">• click on any highlighted element, then browse the tabs to find that setting (text-based search) </p>
+      <p class="small-whitespace not-bold italics">• (answer in between if you did a bit of both)</p>
+    </label>
+    <div class="likert-scale">
+      <span class="outer-label">visual search</span>
+      <label class="step" ng-repeat="step in likertScale">
+        <input type="radio" ng-model="data.search" value="{{step}}">
+        <br>
+        <div class="legend">{{step}}</div>
+      </label>
+      <span class="outer-label">text-based search</span>
+    </div>
+  </div>
+
   <div class="form-group">
     <label>Please share your feedback with us on this customization interface: What did you like about it? What could be improved?</label>
     <textarea class="form-control feedback" ng-model="data.feedback"></textarea>
   </div>
+
   <button class="btn btn-primary" ng-click="submitAndContinue()" ng-disabled="!isDataValid()"> Submit and continue </button>
 </form>

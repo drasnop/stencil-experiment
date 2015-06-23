@@ -133,6 +133,19 @@ input.form-control {
     width: auto;
 }
 
+p.small-whitespace {
+    margin-bottom: 3px;
+    margin-bottom: 3px;
+}
+
+.not-bold {
+    font-weight: normal;
+}
+
+.italics {
+    font-style: italic;
+}
+
 .likert-scale {
     margin: 10px 0;
 }
