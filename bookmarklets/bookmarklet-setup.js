@@ -73,12 +73,11 @@ javascript: (function(e, a, g, h, f, c, b, d) {
       })
    ).done(function() {
       $.when(
-         $.getScript('//ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular-animate.js'),
          $.getScript('//ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular-sanitize.js'),
          $.getScript('//cdn.firebase.com/js/client/2.2.4/firebase.js'),
-         $.getScript('//' + serverURL + '/js/logger.js'),
-         $.getScript('//' + serverURL + '/js/sequencer.js'),
-         $.getScript('//' + serverURL + '/js/trial.js'),
+         $.getScript('//' + serverURL + '/js/experiment/logger.js'),
+         $.getScript('//' + serverURL + '/js/experiment/sequencer.js'),
+         $.getScript('//' + serverURL + '/js/experiment/trial.js'),
          $.Deferred(function(deferred) {
             $(deferred.resolve);
          })
@@ -88,18 +87,21 @@ javascript: (function(e, a, g, h, f, c, b, d) {
             $.getScript('//' + serverURL + '/libs/object-watch.js'),
             $.getScript('//' + serverURL + '/libs/bootstrap.js'),
             $.getScript('//' + serverURL + '/libs/browser.js'),
-            $.getScript('//' + serverURL + '/js/global.js'),
-            $.getScript('//' + serverURL + '/js/tutorial.js'),
-            $.getScript('//' + serverURL + '/js/wunderlist-listeners.js'),
-            $.getScript('//' + serverURL + '/js/experiment.js'),
-            $.getScript('//' + serverURL + '/js/geometry.js'),
-            $.getScript('//' + serverURL + '/js/dataManager.js'),
-            $.getScript('//' + serverURL + '/js/app.js'),
-            $.getScript('//' + serverURL + '/js/controllers.js'),
-            $.getScript('//' + serverURL + '/js/listeners.js'),
-            $.getScript('//' + serverURL + '/js/hooksManager.js'),
-            $.getScript('//' + serverURL + '/js/helpers.js'),
-            $.getScript('//' + serverURL + '/js/main.js'),
+            $.getScript('//' + serverURL + '/js/core/global.js'),
+            $.getScript('//' + serverURL + '/js/experiment/tutorial.js'),
+            $.getScript('//' + serverURL + '/js/experiment/experimentTrials.js'),
+            $.getScript('//' + serverURL + '/js/experiment/wunderlist-listeners.js'),
+            $.getScript('//' + serverURL + '/js/experiment/sequenceGenerator.js'),
+            $.getScript('//' + serverURL + '/js/experiment/experiment.js'),
+            $.getScript('//' + serverURL + '/js/core/view.js'),
+            $.getScript('//' + serverURL + '/js/core/geometry.js'),
+            $.getScript('//' + serverURL + '/js/core/dataManager.js'),
+            $.getScript('//' + serverURL + '/js/core/app.js'),
+            $.getScript('//' + serverURL + '/js/core/controllers.js'),
+            $.getScript('//' + serverURL + '/js/core/listeners.js'),
+            $.getScript('//' + serverURL + '/js/core/hooksManager.js'),
+            $.getScript('//' + serverURL + '/js/core/helpers.js'),
+            $.getScript('//' + serverURL + '/js/core/main.js'),
             $.Deferred(function(deferred) {
                $(deferred.resolve);
             })

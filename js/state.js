@@ -3,7 +3,7 @@ var state = {
 
    "serverURL": "localhost:8888",
    //"serverURL": "tequila.cs.ubc.ca/stencil",
-   "bonusPerTrial": 0.15,
+   "bonusPerTrial": 0.1,
    "bonusPerTab": 0.03,
    "bonusPerOption": 0.03,
    "bookmarkletCode": "",
