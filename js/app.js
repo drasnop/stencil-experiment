@@ -11,7 +11,7 @@ app.run(['$window', '$http', '$q', function($window, $http, $q) {
 
    // abort if browser is not firefox or chrome
    if (Browser.name != "Chrome" && Browser.name != "Firefox") {
-      alert("Fatal error! This experiment only works in Google Chrome or Mozilla Firefox. You won't be able to collect your reward. Please return this HIT.")
+      alert("Fatal error! This experiment only works in Google Chrome or Mozilla Firefox. You won't be able to collect your reward. Please use on of these web browsers, or return this HIT.")
       return;
    }
 
@@ -46,7 +46,7 @@ app.run(['$window', '$http', '$q', function($window, $http, $q) {
          (state.urlParams.interface != localStorage.getObject("stencilExperimentCondition").interface)) {
 
          $("body").empty();
-         alert("Sorry, you can participate only once in this experiment. Otherwise your HIT will be rejected.");
+         alert("Sorry, you can participate only once in this experiment. Otherwise your HIT will be rejected.\n\nIf you have any question or concern, please email: aponsard@cs.ubc.ca");
          return;
       }
 
