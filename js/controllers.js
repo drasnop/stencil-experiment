@@ -21,7 +21,8 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
       // assign participant to their interface, and radomly choose opposite defaults or not
       state.condition = {
          "interface": parseInt(state.urlParams["interface"]),
-         "oppositeDefaults": (Math.random() < 0.5 ? false : true)
+         "partition": parseInt(state.urlParams["partition"]),
+         "oppositeDefaults": parseInt(state.urlParams["oppositeDefaults"]) == 1 ? true : false,
       }
       console.log(state.condition)
 
@@ -119,6 +120,7 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
 
       state.firebase.child('/instructions').push({
          "page": state.page,
+         "title": state.pages[state.page].template,
          "duration": (timestamp - state.previousPageTimestamp) / 1000
       })
 

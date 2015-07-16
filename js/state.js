@@ -3,7 +3,7 @@ var state = {
 
    "serverURL": "localhost:8888",
    //"serverURL": "tequila.cs.ubc.ca/stencil",
-   "bonusPerTrial": 0.1,
+   "bonusPerTrial": 0.05,
    "bonusPerTab": 0.03,
    "bonusPerOption": 0.03,
    "bookmarkletCode": "",
@@ -71,7 +71,7 @@ state.computeCurrentBonusFromTrials = function(trialsSnapshot) {
 
    trialsSnapshot.forEach(function(trialSnapshot) {
       var trial = trialSnapshot.val();
-      if (trial.success)
+      if (trial.number > 0 && trial.success)
          state.bonus += state.bonusPerTrial;
    })
 
