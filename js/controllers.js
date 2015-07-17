@@ -93,7 +93,7 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
 
       // test if 10 trials were performed by this participant
       state.firebase.child('/trials').once("value", function(trialsSnapshot) {
-         state.experimentCompleted = (trialsSnapshot.numChildren() >= 10);
+         state.experimentCompleted = (trialsSnapshot.numChildren() >= state.numberOfTrials);
          console.log(state.experimentCompleted ? "experiment completed!" : "Failure: experiment not completed")
 
          if (state.experimentCompleted)
