@@ -6,6 +6,7 @@ var state = {
    "bonusPerTrial": 0.05,
    "bonusPerTab": 0.03,
    "bonusPerOption": 0.03,
+   "numberOfTrials": 41,
    "bookmarkletCode": "",
    "email": "lotaculi",
    //"email": "",
@@ -54,11 +55,7 @@ var state = {
    "consentGiven": false,
    "experimentCheckClicked": false,
    "experimentCompleted": false,
-   "bonus": 0,
-
-   // data variables used for generating the recognition questionnaire
-   "tabs": [],
-   "options": {}
+   "bonus": 0
 }
 
 state.computeCurrentBonus = function() {
