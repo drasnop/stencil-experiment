@@ -193,7 +193,8 @@ app.controller('preferenceCtrl', function($scope) {
    $scope.data = {};
 
    $scope.isDataValid = function() {
-      return $scope.data.hasOwnProperty("easeOfUse") && $scope.data.hasOwnProperty("liking");
+      return $scope.data.hasOwnProperty("easeOfUse") && $scope.data.hasOwnProperty("liking") &&
+         ($scope.data.hasOwnProperty("familiarity") || $scope.data.hasOwnProperty("search"));
    }
 
    $scope.submitAndContinue = function() {
