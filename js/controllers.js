@@ -7,8 +7,9 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
    $scope.initializeParticipant = function() {
 
       // don't re-initialize a participant that is already logged in
-      if (localStorage.email)
-         return;
+      /*    if (localStorage.email)
+       return;
+*/
 
 
       /* 1. Generate */
@@ -77,7 +78,7 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
       }
    }
 
-   //$scope.initializeParticipant();
+   $scope.initializeParticipant();
 
 
    /* basic utilities function to manage progress */
@@ -198,6 +199,8 @@ app.controller('preferenceCtrl', function($scope) {
    $scope.submitAndContinue = function() {
       console.log($scope.data)
       state.firebase.child("/questionnaires/preference").set($scope.data)
+      if ($scope.bugFeedback)
+         state.firebase.child("/questionnaires/bugFeedback").set($scope.bugFeedback)
       $scope.goToNextPage();
    }
 })

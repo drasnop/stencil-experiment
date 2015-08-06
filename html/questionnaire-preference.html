@@ -63,5 +63,10 @@
     <textarea class="form-control feedback" ng-model="data.feedback"></textarea>
   </div>
 
+  <div class="form-group">
+    <label>If you encountered a bug in the experiment software (= something was not working as it should have), please let us know here:</label>
+    <textarea class="form-control feedback" ng-model="bugFeedback"></textarea>
+  </div>
+
   <button class="btn btn-primary" ng-click="submitAndContinue()" ng-disabled="!isDataValid()"> Submit and continue </button>
 </form>
