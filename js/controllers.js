@@ -35,6 +35,16 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
       }
       console.log(state.info)
 
+      // save the screen resolution, OS and browser (will be overwritten by logger in experiment)
+      state.info.apparatus = {
+         "screenWidth": screen.width,
+         "screenHeight": screen.height,
+         "innerWidth": window.innerWidth,
+         "innerHeight": window.innerHeight,
+         "os": navigator.platform,
+         "browser": Browser.name,
+         "version": Browser.version
+      }
 
       /* 2. Initialize */
 
