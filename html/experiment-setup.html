@@ -30,10 +30,11 @@
         <br>
         <div class="help" ng-show="setupFailure">Open <a href="//www.wunderlist.com/webapp#/lists/inbox" target="_blank">this page</a>, then click on the "Set up experiment" bookmark you've just added to your bookmark bar. Wait 10-20 seconds for the experiment software to load. <u>Note that this whole procedure only works if you're using Chrome or Firefox.</u>
           <br>
-          <br>If this didn't work either, we're sorry. You can let us know in this box what happened (or didn't happen), and I'll try to fix the problem:
+          <br>If this didn't work either, we're sorry. The server might be down, or there may be an incompatibility with your computer.<br> Please return the HIT, and you can let us know that you encountered a problem:
           <textarea class="form-control feedback" ng-model="data.problemFeedback"></textarea>
           <button class="btn btn-default" ng-disabled="!data.problemFeedback" ng-click="submit(); problemFeedbackSubmitted=true;"> Submit </button>
           <span ng-if="problemFeedbackSubmitted">Thanks!</span>
+          <br>Please note that Mechanical Turk makes it <b><u>impossible</u></b> for us to contact you, or give you a compensation, if you haven't completed the HIT — even if we have your workerID :(
         </div>
       </li>
     </ul>
