@@ -96,6 +96,7 @@ javascript: (function(e, a, g, h, f, c, b, d) {
             $.getScript('//' + serverURL + '/js/core/view.js'),
             $.getScript('//' + serverURL + '/js/core/geometry.js'),
             $.getScript('//' + serverURL + '/js/core/dataManager.js'),
+            $.getScript('//' + serverURL + '/js/core/wunderlist.js'),
             $.getScript('//' + serverURL + '/js/core/app.js'),
             $.getScript('//' + serverURL + '/js/core/controllers.js'),
             $.getScript('//' + serverURL + '/js/core/listeners.js'),
